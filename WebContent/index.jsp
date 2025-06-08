@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Ciao</h1>
+	<%@ include file="navbar.jsp"%>
 </body>
 </html>
