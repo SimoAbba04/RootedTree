@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+  background-color: #e2f3e9; /* verde molto chiaro */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /*aggiunge una sfumatura a fine barra di navigazione*/
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height:12em;
+  overflow:hidden;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 10em 10em 10em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  height: 16em;
+  width:  auto;
+}
+
+.nav-links a {
+  margin-left:60px;
+  text-decoration: none;
+  color: #2e5939;
+  font-weight: bold;
+  font-size: 1.3rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #3ca26a; /* verde più scuro in hover */
+}
+
+.icons a {
+  margin-left: 20px;
+}
+
+.icons img {
+  height: 5em;
+  width: 5em;
+  filter: invert(20%) sepia(30%) saturate(300%) hue-rotate(80deg) brightness(90%) contrast(90%);
+  transition: transform 0.2s;
+}
+
+.icons img:hover {
+  transform: scale(1.1);
+}
