@@ -1,9 +1,14 @@
 package it.unisa.project;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.LinkedList;
+
 import javax.sql.DataSource;
-import javax.naming.Context;
-import javax.naming.InitialContext;
 
 public class UserDao implements IBeanDao<UserDTO>{
 	
@@ -70,14 +75,74 @@ public class UserDao implements IBeanDao<UserDTO>{
 
 	@Override
 	public synchronized UserDTO doRetrieveByKey(int code) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection c = null;
+		PreparedStatement ps = null;
+		UserDTO user = new UserDTO();
+		
+		String selectSql = "SELECT FROM " + TABLE_NAME + "WHERE CODE = ?";
+		
+		try {
+			c = ds.getConnection();
+			ps = c.prepareStatement(selectSql);
+			ps.setInt(1, code);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				user.setID(rs.getInt("IdAccount"));
+				user.setNome(rs.getString("Nome"));
+				user.setCognome(rs.getString("Cognome"));
+				user.setEmail(rs.getString("Email"));
+				user.setDataNascita(rs.getDate("DataNascita"));
+			}
+			
+		}finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				if (c != null)
+					c.close();
+			}
+		}
+		return user;
+
 	}
 
 	@Override
 	public synchronized Collection<UserDTO> doRetrieveAll(String order) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection c = null;
+		PreparedStatement ps = null;
+		Collection<UserDTO> users = new LinkedList<UserDTO>();
+		
+		String selectSql = "SELECT * FROM " + TABLE_NAME + "WHERE CODE = ?";
+		
+		if (order != null && !order.equals("")) {
+			selectSql += " ORDER BY " + order;
+		}
+
+		
+		try {
+			c = ds.getConnection();
+			ps = c.prepareStatement(selectSql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				UserDTO user = new UserDTO();
+				user.setID(rs.getInt("IdAccount"));
+				user.setNome(rs.getString("Nome"));
+				user.setCognome(rs.getString("Cognome"));
+				user.setEmail(rs.getString("Email"));
+				user.setDataNascita(rs.getDate("DataNascita"));
+			}
+			
+		}finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				if (c != null)
+					c.close();
+			}
+		}
+		return users;
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.Date;
 
 
 public class UserDTO implements Serializable {
+	int id;
 	String nome;
 	String cognome;
 	String email;
@@ -13,14 +14,16 @@ public class UserDTO implements Serializable {
 	//Add addresses
 	
 	
-	public UserDTO(String n, String c, String e, Date d) {
-		nome = n;
-		cognome = c;
-		email = e;
-		dataNascita = d;
+	public UserDTO() {}
+	
+	
+	public int getID() {
+		return id;
 	}
 	
-	
+	public void setID(int id) {
+		this.id = id;
+	}
 	
 	public String getNome() {
 		return nome;
