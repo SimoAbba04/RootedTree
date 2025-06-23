@@ -1,7 +1,7 @@
 package it.unisa.project;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 
 public class UserDTO implements Serializable {
@@ -9,6 +9,7 @@ public class UserDTO implements Serializable {
 	String nome;
 	String cognome;
 	String email;
+	String pw;
 	Date dataNascita;
 	//add card numbers 
 	//Add addresses
@@ -71,6 +72,16 @@ public class UserDTO implements Serializable {
 		this.dataNascita = dataNascita;
 	}
 
+
+	public String getPassword() {
+		return pw;
+	}
+
+
+
+	public void setPassword(String pw) {
+		this.pw = pw;
+	}
 
 
 	private static final long serialVersionUID = 1L;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-	<Resource name = "jdbc/RootedTreeDB"
+	<Resource name = "jdbc/ROOTED_TREE"
 	auth="Container"
 	driverClassName="com.mysql.cj.jdbc.Driver"
 	type="javax.sql.DataSource"
 	username="root"
 	password="CiaoSimone04"
-	url="jdbc:mysql://localhost:3306/ROOTED_TREE"/>
+	url="jdbc:mysql://localhost:3306/ROOTED_TREE?serverTimezone=UTC"/>
 </Context>
