@@ -20,67 +20,62 @@ import it.unisa.project.UserDTO;
 @WebServlet("/Registration")
 public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String empty = "";
 		String name = request.getParameter("nome");
-		if(name == null || name.trim().isEmpty()) {
+		if (name == null || name.trim().isEmpty()) {
 			System.out.println("Nome nullo.");
 		}
 		String cognome = request.getParameter("cognome");
-		if(cognome == null || cognome.trim().isEmpty()) {
+		if (cognome == null || cognome.trim().isEmpty()) {
 			System.out.println("Cognome nullo.");
 		}
 		String email = request.getParameter("email");
-		if(email == null || email.trim().isEmpty()) {
+		if (email == null || email.trim().isEmpty()) {
 			System.out.println("Email null.");
 		}
 		String password = request.getParameter("password");
-		if(password == null || password.trim().isEmpty()) {
+		if (password == null || password.trim().isEmpty()) {
 			System.out.println("Password nullo.");
 		}
 		String data = request.getParameter("dataNascita");
-		if(data == null || data.trim().isEmpty()) {
+		if (data == null || data.trim().isEmpty()) {
 			System.out.println("Data nullo.");
 		}
 		String hashedPw = toHash(password);
 		Date dataNascita = Date.valueOf(data);
-		System.out.println("  "+hashedPw);
+		System.out.println("  " + hashedPw);// Debug
 		UserDTO user = new UserDTO();
-		user.setNome(name);
-		user.setCognome(cognome);
-		user.setEmail(email);
+		user.setNome(encodeHtmlEntities(name));
+		user.setCognome(encodeHtmlEntities(cognome));
+		user.setEmail(encodeHtmlEntities(email));
 		user.setPassword(hashedPw);
 		user.setDataNascita(dataNascita);
-		
+
 		ServletContext context = getServletContext();
 		DataSource ds = (DataSource) context.getAttribute("DataSource");
 
 		if (ds == null) {
-		    System.out.println("⚠️ DataSource NON inizializzato!");
-		    throw new ServletException("DataSource mancante!");
+			System.out.println("DataSource NON inizializzato!");
+			throw new ServletException("DataSource mancante!");
 		}
-		
+
 		UserDAO savingUser = new UserDAO(ds);
-		
+
 		try {
 			savingUser.doSave(user);
-
-			// 6A. Successo → vai alla pagina di successo
 			request.setAttribute("messaggio", "Registrazione avvenuta con successo!");
 			request.getRequestDispatcher("/registrazione.jsp").forward(request, response);
 
 		} catch (SQLException e) {
-			// 6B. Errore → mostra messaggio di errore
 			e.printStackTrace();
 			request.setAttribute("messaggio", "Errore durante la registrazione: " + e.getMessage());
 			request.getRequestDispatcher("/registrazione.jsp").forward(request, response);
 		}
 	}
-		
-		
-	
-	
+
 	private String toHash(String password) {
 		String hashString = null;
 		try {
@@ -96,4 +91,11 @@ public class Registration extends HttpServlet {
 		return hashString;
 	}
 
+	public static String encodeHtmlEntities(String input) {
+		if (input == null)
+			return null;
+
+		return input.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;")
+				.replace("'", "&#39").replace(" ", "&nbsp;");
+	}
 }
