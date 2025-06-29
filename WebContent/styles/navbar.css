@@ -3,47 +3,52 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar {
-  background-color: #e2f3e9; /* verde molto chiaro */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /*aggiunge una sfumatura a fine barra di navigazione*/
+  background-color: #f0f5f0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Ombra più delicata */
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 1000;
-  height:12em;
-  overflow:hidden;
+  
 }
 
 .navbar-container {
-  max-width: 1200px;
-  margin: 0 10em 10em 10em;
+  max-width: 1300px;
+  margin: 0 auto; /* Centra il contenitore orizzontalmente */
+  padding: 0 2rem; /* Aggiunge spazio ai lati */
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 90px; /* Altezza controllata e ragionevole */
 }
 
 .logo img {
-  height: 16em;
-  width:  auto;
+  height: 80px; /* Dimensione del logo più realistica */
+  width: auto;
+  /* l'immagine potrebbe apparire leggermente schiacciata, 
+     impostare `vertical-align: middle;` può aiutare */
+  vertical-align: middle;
 }
 
 .nav-links a {
-  margin-left:60px;
+  margin-left: 40px;
   text-decoration: none;
-  color: #2e5939;
-  font-weight: bold;
-  font-size: 1.3rem;
+  color:#3d4c41;
+  font-weight: 600; /* Leggermente meno pesante di "bold" */
+  font-size: 1.1rem;
   transition: color 0.3s;
 }
 
 .nav-links a:hover {
-  color: #3ca26a; /* verde più scuro in hover */
+  color: #4a6853;
 }
 
 .icons a {
@@ -51,12 +56,13 @@ body {
 }
 
 .icons img {
-  height: 5em;
-  width: 5em;
-  filter: invert(20%) sepia(30%) saturate(300%) hue-rotate(80deg) brightness(90%) contrast(90%);
-  transition: transform 0.2s;
+  height: 26px; /* Dimensioni delle icone più adatte a una navbar */
+  width: 26px;
+  opacity: 0.7; /* Rende le icone un po' più delicate */
+  transition: opacity 0.3s, transform 0.2s;
 }
 
 .icons img:hover {
+  opacity: 1;
   transform: scale(1.1);
 }

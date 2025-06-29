@@ -5,44 +5,88 @@
 	padding: 0;
 }
 
-.footer-container {
+footer {
 	width: 100%;
-	background-color: #b37700;
-	position: fixed;
+	background-color: #4d4039;
+	color: #f0f5f0;
+	padding: 50px 0;
+	position: fixed; 
+
+	box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
 	right: 0;
 	bottom: 0;
-	font-family: 'Segoe UI', sans-serif;
-	height: 10em;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
-	bottom: 0;
 }
 
-footer {
+.footer-container {
+	max-width: 1300px;
+	margin: 0 auto;
+	padding: 0 2rem;
 	display: flex;
 	justify-content: space-between;
+	gap: 40px;
+	flex-wrap: wrap;
 }
 
-.info {
-	margin: 1em 10em 0 0;
+.footer-column {
+	flex: 1;
+	min-width: 220px;
 }
 
-.assistenza {
-	margin: 1em 10em 0 0;
-}
-
-.icons-footer {
-	margin: 1em 10em 0 0;
-	list-style: none;
-	text-align: center;
-}
-
-.icons-footer img {
-	height: 2em;
-	width: 2em;
-	transition: transform 0.2s;
-}
-
-.logo img {
-	height: 10em;
+.logo-column img {
+	height: 100px; /* Logo più piccolo per il footer */
 	width: auto;
+	margin-bottom: 15px;
+}
+
+.copyright {
+	font-size: 0.85em;
+	color: rgba(240, 245, 240, 0.7);
+	/* Testo del copyright leggermente trasparente */
+}
+
+.footer-title {
+	font-size: 1.2em;
+	font-weight: 600;
+	margin-bottom: 20px;
+	display: block;
+	color: #fff;
+}
+
+.footer-column ul {
+	list-style: none;
+	padding: 0;
+}
+
+.footer-column ul li {
+	margin-bottom: 12px;
+	font-size: 0.95em;
+}
+
+.footer-column a {
+	text-decoration: none;
+	color: #f0f5f0;
+	transition: color 0.3s;
+}
+
+.footer-column a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.social-icons {
+	display: flex;
+	gap: 15px; /* Spazio tra le icone social */
+}
+
+.social-icons img {
+	height: 24px;
+	width: 24px;
+	opacity: 0.8;
+	transition: opacity 0.3s, transform 0.2s;
+}
+
+.social-icons img:hover {
+	opacity: 1;
+	transform: translateY(-3px);
+	/* Leggero effetto al passaggio del mouse */
 }
