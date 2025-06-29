@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.footer-container {
+	width: 100%;
+	background-color: #b37700;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	font-family: 'Segoe UI', sans-serif;
+	height: 10em;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+	bottom: 0;
+}
+
+footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.info {
+	margin: 1em 10em 0 0;
+}
+
+.assistenza {
+	margin: 1em 10em 0 0;
+}
+
+.icons-footer {
+	margin: 1em 10em 0 0;
+	list-style: none;
+	text-align: center;
+}
+
+.icons-footer img {
+	height: 2em;
+	width: 2em;
+	transition: transform 0.2s;
+}
+
+.logo img {
+	height: 10em;
+	width: auto;
+}

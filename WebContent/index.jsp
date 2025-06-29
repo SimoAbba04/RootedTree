@@ -4,7 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>RootedTree - Bonsai Shop</title>
+<link rel="icon" type="image/x-icon" href="/images/rootedTreeFavicon.svg">
+<link rel="stylesheet" href="./styles/navbar.css">
+<link rel="stylesheet" href="./styles/footer.css">
+
 </head>
 <body>
 	<%@ include file="navbar.jsp"%>
