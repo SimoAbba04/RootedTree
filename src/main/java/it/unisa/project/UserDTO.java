@@ -5,12 +5,25 @@ import java.sql.Date;
 
 
 public class UserDTO implements Serializable {
+	public enum Ruolo {
+	    utente,
+	    admin;
+	    public static Ruolo fromString(String ruoloStr) {
+	        if (ruoloStr == null) return utente; // default
+	        switch (ruoloStr.toLowerCase()) {
+	            case "admin": return admin;
+	            case "utente": return utente;
+	            default: throw new IllegalArgumentException("Ruolo non valido: " + ruoloStr);
+	        }
+	    }
+	}
 	int id;
 	String nome;
 	String cognome;
 	String email;
 	String pw;
 	Date dataNascita;
+	Ruolo ruolo;
 	//add card numbers 
 	//Add addresses
 	
@@ -82,7 +95,14 @@ public class UserDTO implements Serializable {
 	public void setPassword(String pw) {
 		this.pw = pw;
 	}
+	
+	public Ruolo getRuolo() {
+		return ruolo;
+	}
 
+	public void setRuolo(Ruolo ruolo) {
+		this.ruolo = ruolo;
+	}
 
 	private static final long serialVersionUID = 1L;
 

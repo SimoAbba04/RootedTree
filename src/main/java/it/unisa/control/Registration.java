@@ -26,22 +26,27 @@ public class Registration extends HttpServlet {
 		String name = request.getParameter("nome");
 		if (name == null || name.trim().isEmpty()) {
 			System.out.println("Nome nullo.");
+			throw new ServletException("Nome mancante!");
 		}
 		String cognome = request.getParameter("cognome");
 		if (cognome == null || cognome.trim().isEmpty()) {
 			System.out.println("Cognome nullo.");
+			throw new ServletException("Cognome mancante!");
 		}
 		String email = request.getParameter("email");
 		if (email == null || email.trim().isEmpty()) {
 			System.out.println("Email null.");
+			throw new ServletException("Email mancante!");
 		}
 		String password = request.getParameter("password");
 		if (password == null || password.trim().isEmpty()) {
-			System.out.println("Password nullo.");
+			System.out.println("Password null.");
+			throw new ServletException("Password mancante!");
 		}
 		String data = request.getParameter("dataNascita");
 		if (data == null || data.trim().isEmpty()) {
 			System.out.println("Data nullo.");
+			throw new ServletException("Data mancante!");
 		}
 		String hashedPw = HtmlHash.toHash(password);
 		Date dataNascita = Date.valueOf(data);
@@ -66,12 +71,12 @@ public class Registration extends HttpServlet {
 		try {
 			savingUser.doSave(user);
 			request.setAttribute("messaggio", "Registrazione avvenuta con successo!");
-			request.getRequestDispatcher("/registrazione.jsp").forward(request, response);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 			request.setAttribute("messaggio", "Errore durante la registrazione: " + e.getMessage());
-			request.getRequestDispatcher("/registrazione.jsp").forward(request, response);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 	}
 }

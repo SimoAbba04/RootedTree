@@ -10,8 +10,8 @@
 	<footer>
 		<div class="footer-container">
 			<div class="logo">
-				<a href="index.jsp"> <img
-					src="<%request.getContextPath()%>/images/logo.svg">
+				<a href="index.jsp"> 
+				 <img src="<%=request.getContextPath()%>/images/logo.svg" alt="RootedTree Logo">
 				</a>
 			</div>
 			<div class="info">
@@ -20,7 +20,7 @@
 					<li></li>
 					<li></li>
 					<li>Sede legale: Via dei pazzi, 101 (NN)</li>
-					<li>Copyright 2025</li>
+					<li>Copyright<sub>&#169</sub> 2025</li>
 				</ul>
 			</div>
 			<div class ="assistenza">
