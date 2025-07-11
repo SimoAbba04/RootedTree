@@ -1,68 +1,123 @@
 @charset "UTF-8";
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar {
-  background-color: #f0f5f0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Ombra più delicata */
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  
+	background-color: #f0f5f0;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Ombra più delicata */
+	position: sticky;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
 }
 
 .navbar-container {
-  max-width: 1300px;
-  margin: 0 auto; /* Centra il contenitore orizzontalmente */
-  padding: 0 2rem; /* Aggiunge spazio ai lati */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 90px; /* Altezza controllata e ragionevole */
+	max-width: 1300px;
+	margin: 0 auto; /* Centra il contenitore orizzontalmente */
+	padding: 0 2rem; /* Aggiunge spazio ai lati */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 90px; /* Altezza controllata e ragionevole */
 }
 
 .logo img {
-  height: 80px; /* Dimensione del logo più realistica */
-  width: auto;
-  /* l'immagine potrebbe apparire leggermente schiacciata, 
+	height: 150px; /* Dimensione del logo più realistica */
+	width: auto;
+	/* l'immagine potrebbe apparire leggermente schiacciata, 
      impostare `vertical-align: middle;` può aiutare */
-  vertical-align: middle;
+	vertical-align: middle;
 }
 
 .nav-links a {
-  margin-left: 40px;
-  text-decoration: none;
-  color:#3d4c41;
-  font-weight: 600; /* Leggermente meno pesante di "bold" */
-  font-size: 1.1rem;
-  transition: color 0.3s;
+	margin-left: 40px;
+	text-decoration: none;
+	color: #3d4c41;
+	font-weight: 600; /* Leggermente meno pesante di "bold" */
+	font-size: 1.1rem;
+	transition: color 0.3s;
 }
 
 .nav-links a:hover {
-  color: #4a6853;
+	color: #4a6853;
 }
 
 .icons a {
-  margin-left: 20px;
+	margin-left: 20px;
 }
 
 .icons img {
-  height: 26px; /* Dimensioni delle icone più adatte a una navbar */
-  width: 26px;
-  opacity: 0.7; /* Rende le icone un po' più delicate */
-  transition: opacity 0.3s, transform 0.2s;
+	height: 36px; /* Dimensioni delle icone più adatte a una navbar */
+	width: 36px;
+	opacity: 0.7; /* Rende le icone un po' più delicate */
+	transition: opacity 0.3s, transform 0.2s;
 }
 
 .icons img:hover {
-  opacity: 1;
-  transform: scale(1.1);
+	opacity: 1;
+	transform: scale(1.1);
+}
+
+/* Stili per la Search Bar */
+.search-bar {
+    position: relative; /* Necessario per posizionare gli elementi interni */
+}
+
+.search-bar form {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Allinea gli elementi a destra */
+}
+
+/* Stile dell'input di testo */
+.search-bar input[type="text"] {
+    width: 0; /* Inizialmente nascosto */
+    padding: 0;
+    border: none;
+    outline: none;
+    opacity: 0; /* Completamente trasparente */
+    transition: width 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out;
+    vertical-align: middle;
+    background-color: transparent;
+    font-size: 1rem;
+    height: 40px; /* Altezza allineata al bottone */
+    border-radius: 20px;
+}
+
+/* Stile del bottone di ricerca */
+.search-bar button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar button img {
+    height: 32px; /* Leggera riduzione per un look più pulito */
+    width: 32px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.search-bar button:hover img {
+    opacity: 1;
+}
+
+/* Classe 'active' per l'espansione */
+.search-bar.active input[type="text"] {
+    width: 220px; /* Larghezza quando espanso */
+    opacity: 1;
+    padding: 0 15px; /* Spaziatura interna */
+    border: 1px solid #ccc; /* Bordo visibile quando attivo */
 }

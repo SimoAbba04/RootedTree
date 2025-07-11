@@ -1,5 +1,5 @@
 
-header class="navbar">
+<header class="navbar">
     <div class="navbar-container">
         <div class="logo">
             <a href="index.jsp">
@@ -10,6 +10,13 @@ header class="navbar">
             <a href="products.jsp">Prodotti</a>
             <a href="discoverUs.jsp">Chi siamo</a>
         </nav>
+        <div class="search-bar">
+       		<form action="cercaProdotto.jsp" method="GET">
+        	<input type="text" placeholder="Acero palmato">
+        	<button type="submit"><img alt="cerca" src="./images/search.svg"></button>
+        	</form>
+        </div>
+        
         <div class="icons">
             <a href="register.jsp">
                 <img src="<%=request.getContextPath()%>/images/login.svg" alt="Login">
@@ -19,3 +26,4 @@ header class="navbar">
             </a>
         </div>
     </div>
+</header>

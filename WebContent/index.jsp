@@ -8,7 +8,7 @@
 <link rel="icon" type="image/x-icon" href="/images/rootedTreeFavicon.svg">
 <link rel="stylesheet" href="./styles/navbar.css">
 <link rel="stylesheet" href="./styles/footer.css">
-
+<script src="./scripts/animation.js"></script>
 </head>
 <body>
 	<%@ include file="navbar.jsp"%>
