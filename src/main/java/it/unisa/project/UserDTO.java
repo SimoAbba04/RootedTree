@@ -17,15 +17,13 @@ public class UserDTO implements Serializable {
 	        }
 	    }
 	}
-	int id;
-	String nome;
-	String cognome;
-	String email;
-	String pw;
-	Date dataNascita;
+	private int id;
+	private String nome;
+	private String cognome;
+	private String email;
+	private String pw;
+	private Date dataNascita;
 	Ruolo ruolo;
-	//add card numbers 
-	//Add addresses
 	
 	
 	public UserDTO() {}

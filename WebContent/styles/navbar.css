@@ -6,10 +6,6 @@
 	box-sizing: border-box;
 }
 
-body {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 .navbar {
 	background-color: #f0f5f0;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Ombra più delicata */
@@ -20,6 +16,7 @@ body {
 }
 
 .navbar-container {
+	display:flex;
 	max-width: 1300px;
 	margin: 0 auto; 
 	padding: 0 2rem;

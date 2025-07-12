@@ -1,6 +1,5 @@
 let slideIndex = 1;
 showSlides(slideIndex);
-console.log("Sono a fare cose");
 function plusSlides(n) {
 	showSlides(slideIndex += n);
 }
@@ -9,7 +8,6 @@ function plusSlides(n) {
 function showSlides(n) {
 	let i;
 	let slides = document.getElementsByClassName("mySlides");
-	console.log("Sono nella funzione");
 
 	if (n > slides.length) {
 		slideIndex = 1;
@@ -19,7 +17,6 @@ function showSlides(n) {
 	}
 	for (i = 0; i < slides.length; i++) {
 		slides[i].style.display = "none";
-		console.log("Sono nel for");
 	}
 	slides[slideIndex - 1].style.display = "block";
 	
