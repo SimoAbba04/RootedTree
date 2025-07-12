@@ -1,27 +1,27 @@
 let slideIndex = 1;
 showSlides(slideIndex);
-
+console.log("Sono a fare cose");
 function plusSlides(n) {
 	showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-	showSlides(slideIndex = n);
 }
 
 
 function showSlides(n) {
 	let i;
-	let slides = document.getElementByClassName("mySlides");
-	if (n > slides.lenght) {
+	let slides = document.getElementsByClassName("mySlides");
+	console.log("Sono nella funzione");
+
+	if (n > slides.length) {
 		slideIndex = 1;
 	}
 	if (n < 1) {
-		slideIndex = slides.lenght;
+		slideIndex = slides.length;
 	}
-	for (i = 0; i < dots.lenght; i++) {
+	for (i = 0; i < slides.length; i++) {
 		slides[i].style.display = "none";
+		console.log("Sono nel for");
 	}
 	slides[slideIndex - 1].style.display = "block";
+	
 
 }

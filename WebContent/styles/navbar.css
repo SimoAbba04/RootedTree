@@ -21,12 +21,11 @@ body {
 
 .navbar-container {
 	max-width: 1300px;
-	margin: 0 auto; /* Centra il contenitore orizzontalmente */
-	padding: 0 2rem; /* Aggiunge spazio ai lati */
-	display: flex;
+	margin: 0 auto; 
+	padding: 0 2rem;
 	align-items: center;
 	justify-content: space-between;
-	height: 90px; /* Altezza controllata e ragionevole */
+	height: 90px; 
 }
 
 .logo img {

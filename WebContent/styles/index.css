@@ -1,0 +1,15 @@
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    min-height: 100vh; 
+    margin: 0;
+}
+
+
+.main-content {
+    width: 100%;
+}
+
+.content-wrap {
+    flex: 1; /* Questa regola spinge il footer verso il basso */
+}
