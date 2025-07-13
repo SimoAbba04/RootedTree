@@ -16,9 +16,9 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import it.unisa.project.UserDAO;
-import it.unisa.project.UserDTO;
-import it.unisa.project.UserDTO.Ruolo;
+import it.unisa.model.UserDAO;
+import it.unisa.model.UserDTO;
+import it.unisa.model.UserDTO.Ruolo;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {

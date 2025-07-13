@@ -1,4 +1,4 @@
-package it.unisa.project;
+package it.unisa.model;
 
 import java.io.Serializable;
 import java.sql.Date;

@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import it.unisa.project.UserDTO;
+import it.unisa.model.UserDTO;
 
 @WebServlet("/account")
 public class AccountDetailServlet extends HttpServlet {

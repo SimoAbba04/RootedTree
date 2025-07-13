@@ -1,4 +1,4 @@
-package it.unisa.project;
+package it.unisa.model;
 
 import java.sql.Connection;
 
@@ -11,7 +11,7 @@ import java.util.LinkedList;
 
 import javax.sql.DataSource;
 
-import it.unisa.project.UserDTO.Ruolo;
+import it.unisa.model.UserDTO.Ruolo;
 
 public class UserDAO implements IBeanDao<UserDTO> {
 
@@ -56,7 +56,7 @@ public class UserDAO implements IBeanDao<UserDTO> {
 		PreparedStatement ps = null;
 		int result = 0;
 
-		String deleteSql = "DELETE FROM " + TABLE_NAME + "WHERE CODE = ?";
+		String deleteSql = "DELETE FROM " + TABLE_NAME + " WHERE CODE = ?";
 
 		try {
 			c = ds.getConnection();
@@ -81,7 +81,7 @@ public class UserDAO implements IBeanDao<UserDTO> {
 		PreparedStatement ps = null;
 		UserDTO user = new UserDTO();
 
-		String selectSql = "SELECT FROM " + TABLE_NAME + "WHERE CODE = ?";
+		String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE IdAccount = ?";
 
 		try {
 			c = ds.getConnection();
@@ -154,12 +154,13 @@ public class UserDAO implements IBeanDao<UserDTO> {
 		Connection c = null;
 		PreparedStatement ps = null;
 		UserDTO user = new UserDTO();
-
-		String sql = "SELECT * FROM" + " WHERE Email = " + email;
+		
+		String sql = "SELECT * FROM" + " WHERE Email = ?";
 
 		try {
 			c = ds.getConnection();
 			ps = c.prepareStatement(sql);
+			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
 			if(rs.isBeforeFirst()) {
 				return null;

@@ -13,8 +13,8 @@ import java.sql.Date;
 
 import javax.sql.DataSource;
 
-import it.unisa.project.UserDAO;
-import it.unisa.project.UserDTO;
+import it.unisa.model.UserDAO;
+import it.unisa.model.UserDTO;
 
 @WebServlet("/Registration")
 public class Registration extends HttpServlet {

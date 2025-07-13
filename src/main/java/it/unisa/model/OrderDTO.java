@@ -26,5 +26,41 @@ public class OrderDTO implements Serializable {
 	}
 	private double totale;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getIdAccount() {
+		return idAccount;
+	}
+
+	public void setIdAccount(int idAccount) {
+		this.idAccount = idAccount;
+	}
+
+	public Date getDataOrdine() {
+		return dataOrdine;
+	}
+
+	public void setDataOrdine(Date dataOrdine) {
+		this.dataOrdine = dataOrdine;
+	}
+
+	public double getTotale() {
+		return totale;
+	}
+
+	public void setTotale(double totale) {
+		this.totale = totale;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private static final long serialVersionUID = 1L;
 }
