@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -18,26 +19,31 @@ public class UserDAO implements IBeanDao<UserDTO> {
 	private static DataSource ds;
 	private static final String TABLE_NAME = "Account";
 
+
 	public UserDAO(DataSource ds) {
 		UserDAO.ds = ds;
 	}
 
 	@Override
-	public synchronized void doSave(UserDTO user) throws SQLException {
+	public synchronized int doSave(UserDTO user) throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
-
 		String insertSql = "INSERT INTO " + TABLE_NAME + "(Nome,Cognome,Email,Pw,DataNascita) VALUES (?,?,?,?,?)";
-
+		int generatedId = -1;
+		
 		try {
 			c = ds.getConnection();
-			ps = c.prepareStatement(insertSql);
+			ps = c.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, user.getNome());
 			ps.setString(2, user.getCognome());
 			ps.setString(3, user.getEmail());
 			ps.setString(4, user.getPassword());
 			ps.setDate(5, (Date) user.getDataNascita());
 			ps.executeUpdate();
+			ResultSet rs = ps.getGeneratedKeys();
+			if (rs.next()) {
+				generatedId = rs.getInt(1);
+			}
 		} finally {
 			try {
 				if (ps != null)
@@ -47,6 +53,7 @@ public class UserDAO implements IBeanDao<UserDTO> {
 					c.close();
 			}
 		}
+		return generatedId;
 
 	}
 
@@ -154,7 +161,7 @@ public class UserDAO implements IBeanDao<UserDTO> {
 		Connection c = null;
 		PreparedStatement ps = null;
 		UserDTO user = new UserDTO();
-		
+
 		String sql = "SELECT * FROM" + " WHERE Email = ?";
 
 		try {
@@ -162,7 +169,7 @@ public class UserDAO implements IBeanDao<UserDTO> {
 			ps = c.prepareStatement(sql);
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
-			if(rs.isBeforeFirst()) {
+			if (rs.isBeforeFirst()) {
 				return null;
 			}
 			while (rs.next()) {

@@ -60,5 +60,6 @@ public class ProductDTO implements Serializable {
 		return this.categoria;
 	}
 	private static final long serialVersionUID = 1L;
+
 	
 }

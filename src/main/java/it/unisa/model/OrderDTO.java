@@ -24,6 +24,7 @@ public class OrderDTO implements Serializable {
 	        }
 	    }
 	}
+	Stato st;
 	private double totale;
 	
 	public int getId() {
@@ -60,6 +61,13 @@ public class OrderDTO implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	public void setStato(Stato st) {
+		this.st = st;
+	}
+	public Stato getStato() {
+		return this.st;
 	}
 
 	private static final long serialVersionUID = 1L;
