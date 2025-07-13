@@ -76,7 +76,7 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 			ps.setDouble(3, prodotto.getPrezzo());
 			ps.setInt(4, prodotto.getDisponibilità());
 			ps.setString(5, prodotto.getCategoria().name());
-			//Metodo elegante per variare il numero di parametri
+			// Metodo elegante per variare il numero di parametri
 			int parameterIndex = 6;
 			if (immagine != null) {
 				ps.setBinaryStream(parameterIndex++, immagine);
@@ -207,6 +207,32 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 			}
 		}
 		return imageData;
+	}
+
+	public synchronized void updateImage(int productId, InputStream imageStream) throws SQLException {
+		Connection c = null;
+		PreparedStatement ps = null;
+
+		String sql = "UPDATE Prodotto SET Immagine = ? WHERE IdProdotto = ?";
+
+		try {
+			c = ds.getConnection();
+			ps = c.prepareStatement(sql);
+
+			ps.setBinaryStream(1, imageStream);
+			ps.setInt(2, productId);
+
+			ps.executeUpdate();
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				if (c != null)
+					c.close();
+			}
+		}
+
 	}
 
 }

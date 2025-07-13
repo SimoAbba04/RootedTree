@@ -5,12 +5,12 @@ import java.sql.Date;
 
 
 public class AddressDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
 	int id;
 	private String stato;
 	private String provincia;
 	private String città;
 	private String via;
-	private String civico;
 	private String CAP;
 	private String descrizione;
 	private String NumeroTelefono; 
@@ -56,14 +56,6 @@ public class AddressDTO implements Serializable {
 
 	public void setVia(String via) {
 		this.via = via;
-	}
-
-	public String getCivico() {
-		return civico;
-	}
-
-	public void setCivico(String civico) {
-		this.civico = civico;
 	}
 
 	public String getCAP() {
