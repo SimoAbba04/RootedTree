@@ -235,4 +235,39 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 
 	}
 
+	public synchronized Collection<ProductDTO> doRetrieveByName(String name) throws SQLException {
+		Connection c = null;
+		PreparedStatement ps = null;
+		Collection<ProductDTO> prodotti = new LinkedList<ProductDTO>();
+		String sql = "SELECT * FROM " + TABLE_NAME + "WHERE NAME LIKE ?";
+		try {
+			c = ds.getConnection();
+			ps = c.prepareStatement(sql);
+
+			ps.setString(1, name);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ProductDTO prodotto = new ProductDTO();
+				prodotto.setId(rs.getInt("IdProdotto"));
+				prodotto.setNome(rs.getString("Nome"));
+				prodotto.setDescrizione(rs.getString("Descrizione"));
+				prodotto.setPrezzo(rs.getDouble("Prezzo"));
+				prodotto.setDisponibilità(rs.getInt("Stock"));
+				prodotto.setCategoria(Categoria.fromString(rs.getString("Categoria")));
+				prodotti.add(prodotto);
+			}
+
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				if (c != null)
+					c.close();
+			}
+		}
+		return prodotti;
+
+	}
+
 }
