@@ -18,7 +18,7 @@ import it.unisa.model.ProductDTO;
 public class ProductDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@SuppressWarnings("unused") //Per sopprimere dead code
+	@SuppressWarnings("unused") //Per sopprimere dead code nel secondo try
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int id = -1;
