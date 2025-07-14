@@ -1,6 +1,7 @@
 package it.unisa.control;
 
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,8 +29,8 @@ public class ProductDetailServlet extends HttpServlet {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID prodotto non valido");
 			return;
 		}
-
-		DataSource ds = (DataSource) getServletContext().getAttribute("Datasource");
+		ServletContext context = getServletContext();
+		DataSource ds = (DataSource) context.getAttribute("Datasource");
 		ProductDAO product = new ProductDAO(ds);
 
 		try {

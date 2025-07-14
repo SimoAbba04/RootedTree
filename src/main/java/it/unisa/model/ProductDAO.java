@@ -239,7 +239,7 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 		Connection c = null;
 		PreparedStatement ps = null;
 		Collection<ProductDTO> prodotti = new LinkedList<ProductDTO>();
-		String sql = "SELECT * FROM " + TABLE_NAME + "WHERE Nome LIKE ?";
+		String sql = "SELECT * FROM " + TABLE_NAME + " WHERE Nome LIKE ?";
 		try {
 			c = ds.getConnection();
 			ps = c.prepareStatement(sql);

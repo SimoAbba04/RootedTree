@@ -1,4 +1,4 @@
-package it.unisa.control;
+/*package it.unisa.control;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
@@ -34,11 +34,12 @@ public class DatabaseInitializer implements ServletContextListener {
 		ProductDAO productDao = new ProductDAO(ds);
 		int updatedCount = 0;
 		int i = 0;
+		int f = 1;
 		for (i = 1; i <= 25; i++) {
 
 			InputStream imgStream = null;
 
-			String imagePath = "./images/" + i + ".png";
+			String imagePath = "./images/" + f + ".png";
 			imgStream = context.getResourceAsStream(imagePath);
 			if (imgStream != null) {
 				productDao.updateImage(i, imgStream);
@@ -54,4 +55,4 @@ public class DatabaseInitializer implements ServletContextListener {
 		// Nothing
 	}
 
-}
+}*/

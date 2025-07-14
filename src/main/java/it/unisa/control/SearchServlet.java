@@ -40,7 +40,7 @@ public class SearchServlet extends HttpServlet {
             request.setAttribute("error", "Errore del database durante la ricerca.");
         }
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/search-results.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("./search-results.jsp");
         dispatcher.forward(request, response);
     }
 }
