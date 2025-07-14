@@ -12,7 +12,7 @@ public class Cart implements Serializable {
     public Cart() {
         items = new ArrayList<>();
     }
-
+    
   
     public synchronized void addItem(ProductDTO product) {
         for (CartItem item : items) {

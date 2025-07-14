@@ -1,0 +1,113 @@
+/* Stili per la pagina del carrello (cart.css) */
+
+.page-container {
+    max-width: 1300px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: #3d4c41;
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 1rem;
+}
+
+/* --- Layout Desktop (invariato) --- */
+.cart-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+
+.cart-header {
+    font-weight: 600;
+    color: #555;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3d4c41;
+    text-align: center;
+}
+.cart-header:first-child {
+    text-align: left;
+}
+
+.cart-item-image { display: flex; align-items: center; gap: 1rem; }
+.cart-item-image img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
+.cart-item-price, .cart-item-quantity, .cart-item-subtotal { text-align: center; font-size: 1.1rem; }
+.cart-item-remove { text-align: center; }
+
+.btn-remove { 
+    padding: 0.5rem 1rem; 
+    border-radius: 6px; 
+    border: none; 
+    cursor: pointer; 
+    background-color: #c62828; 
+    color: white; 
+    transition: background-color 0.2s;
+}
+.btn-remove:hover {
+    background-color: #a92222;
+}
+
+.cart-summary {
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+}
+.summary-line { display: flex; justify-content: space-between; margin-bottom: 1rem; }
+.summary-line.total { font-weight: 700; font-size: 1.2rem; border-top: 1px solid #ddd; padding-top: 1rem; }
+.btn-checkout { display: block; width: 100%; text-align: center; background-color: #4a6853; color: white; padding: 1rem; border-radius: 8px; text-decoration: none; font-size: 1.1rem; transition: background-color 0.2s; }
+.btn-checkout:hover { background-color: #3d4c41; }
+
+.empty-cart { text-align: center; font-size: 1.5rem; padding: 4rem 0; }
+.empty-cart + .btn-details { display: table; margin: 0 auto; }
+
+/* --- Layout Mobile Semplificato --- */
+@media (max-width: 768px) {
+    .cart-grid {
+        display: block; /* Annulla la griglia, gli elementi si impilano */
+    }
+
+    .cart-header {
+        display: none; /* Nascondi le intestazioni del desktop */
+    }
+
+    /* Trasforma ogni riga di prodotto in una "card" */
+    .cart-item-image, .cart-item-price, .cart-item-quantity, .cart-item-subtotal, .cart-item-remove {
+        display: flex;
+        justify-content: space-between; /* Allinea etichetta (a sx) e valore (a dx) */
+        align-items: center;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    /* Aggiungi le etichette con il CSS per chiarezza */
+    .cart-item-price::before { content: 'Prezzo'; font-weight: 600; }
+    .cart-item-quantity::before { content: 'Quantità'; font-weight: 600; }
+    .cart-item-subtotal::before { content: 'Subtotale'; font-weight: 600; }
+
+    /* Stile specifico per l'immagine del prodotto */
+    .cart-item-image {
+        justify-content: flex-start; /* Allinea a sinistra */
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+    
+    /* Rimuovi l'etichetta per il pulsante di rimozione */
+    .cart-item-remove::before {
+        content: '';
+    }
+    
+    /* Aggiungi uno spazio più marcato tra i diversi prodotti */
+    .cart-item-remove {
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #3d4c41;
+    }
+}
