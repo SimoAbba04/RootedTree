@@ -16,7 +16,7 @@
 <body>
     <%@ include file="navbar.jsp" %>
 
-    <main class="main-content">
+    <div class="main-content">
         <div class="page-container">
             <h1 class="page-title">
                 <c:choose>
@@ -54,7 +54,7 @@
                 </c:otherwise>
             </c:choose>
         </div>
-    </main>
+    </div>
 
     <%@ include file="footer.jsp" %>
  

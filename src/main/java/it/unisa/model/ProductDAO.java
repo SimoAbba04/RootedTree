@@ -269,6 +269,40 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 		return prodotti;
 
 	}
+	
+
+	public synchronized Collection<ProductDTO> doRetrieveLastThreeItem() throws SQLException {
+		Connection c = null;
+		PreparedStatement ps = null;
+		Collection<ProductDTO> prodotti = new LinkedList<ProductDTO>();
+		String sql = "SELECT * FROM " + TABLE_NAME + " ORDER BY IdProdotto DESC LIMIT 3";
+		try {
+			c = ds.getConnection();
+			ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ProductDTO prodotto = new ProductDTO();
+				prodotto.setId(rs.getInt("IdProdotto"));
+				prodotto.setNome(rs.getString("Nome"));
+				prodotto.setDescrizione(rs.getString("Descrizione"));
+				prodotto.setPrezzo(rs.getDouble("Prezzo"));
+				prodotto.setDisponibilità(rs.getInt("Stock"));
+				prodotto.setCategoria(Categoria.fromString(rs.getString("Categoria")));
+				prodotti.add(prodotto);
+			}
+
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				if (c != null)
+					c.close();
+			}
+		}
+		return prodotti;
+
+	}
 
 
 
