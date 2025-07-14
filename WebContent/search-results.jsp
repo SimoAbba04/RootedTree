@@ -57,6 +57,6 @@
     </main>
 
     <%@ include file="footer.jsp" %>
-    <script src="./scripts/animations.js"></script>
+ 
 </body>
 </html>
