@@ -7,7 +7,7 @@
             </a>
         </div>
         <nav class="nav-links">
-            <a href="products.jsp">Prodotti</a>
+            <a href="SearchServlet?searchQuery=">Prodotti</a>
             <a href="discoverUs.jsp">Chi siamo</a>
         </nav>
         <div class="search-bar">
@@ -18,7 +18,7 @@
         </div>
         
         <div class="icons">
-            <a href="register.jsp">
+            <a href=".jsp">
                 <img src="<%=request.getContextPath()%>/images/login.svg" alt="Login">
             </a>
             <a href="cart.jsp">

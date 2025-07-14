@@ -73,8 +73,7 @@
 							<span>Totale</span> <span><fmt:formatNumber
 									value="${cart.total}" type="currency" currencySymbol="€ " /></span>
 						</div>
-						<a href="checkout.jsp" class="btn-checkout">Procedi al
-							Checkout</a>
+						<a href="checkout.jsp" class="btn-checkout">Procedi all'ordine</a>
 					</div>
 				</c:when>
 				<c:otherwise>

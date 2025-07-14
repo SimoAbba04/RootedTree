@@ -11,8 +11,8 @@
         <div class="footer-column">
             <span class="footer-title">Informazioni</span>
             <ul>
-                <li><a href="termini.jsp">Termini e Condizioni</a></li>
-                <li><a href="privacy.jsp">Privacy Policy</a></li>
+                <li><a href="#">Termini e Condizioni</a></li>
+                <li><a href="#">Privacy Policy</a></li>
                 <li>Sede: Via del Ficus, 42 - 20121 Milano (MI)</li>
                 <li>P.IVA: 01234567890</li>
             </ul>
@@ -21,7 +21,7 @@
         <div class="footer-column">
             <span class="footer-title">Assistenza Clienti</span>
             <ul>
-                <li><a href="faq.jsp">Domande Frequenti (FAQ)</a></li>
+                <li><a href="#">Domande Frequenti (FAQ)</a></li>
                 <li><a href="discoverUs.jsp">Chi siamo</a></li>
                 <li>Email: supporto@rootedtree.it</li>
                 <li>Telefono: +39 02 1234567</li>
