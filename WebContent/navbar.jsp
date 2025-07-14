@@ -26,4 +26,5 @@
             </a>
         </div>
     </div>
+    <script src="./scripts/animation.js"></script>
 </header>

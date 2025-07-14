@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Apre la barra di ricerca al click sul bottone
     searchButton.addEventListener("click", function(event) {
-        // Se la barra non è attiva, aprila e impedisci l'invio del form
         if (!searchBar.classList.contains("active")) {
             event.preventDefault(); // Previene l'invio del form al primo click
             searchBar.classList.add("active");

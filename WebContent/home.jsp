@@ -12,3 +12,4 @@
 	<a class="next" onclick="plusSlides(1)">&#10095</a>
 	<script src="./scripts/slider.js"></script>
 </div>
+

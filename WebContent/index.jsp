@@ -18,6 +18,6 @@
 		<%@ include file="home.jsp"%>
 	</main>
 	<%@ include file="footer.jsp"%>
-	<script src="./scripts/animation.js"></script>
+	
 </body>
 </html>
