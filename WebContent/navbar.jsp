@@ -11,8 +11,8 @@
             <a href="discoverUs.jsp">Chi siamo</a>
         </nav>
         <div class="search-bar">
-       		<form action="cercaProdotto.jsp" method="GET">
-        	<input type="text" placeholder="Acero palmato">
+       		<form action="SearchServlet" method="GET">
+        	<input type="text" placeholder="Acero palmato" name="searchQuery">
         	<button type="submit"><img alt="cerca" src="./images/search.svg"></button>
         	</form>
         </div>

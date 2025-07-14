@@ -235,16 +235,16 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 
 	}
 
-	public synchronized Collection<ProductDTO> doRetrieveByName(String name) throws SQLException {
+	public synchronized Collection<ProductDTO> doRetrieveByName(String query) throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
 		Collection<ProductDTO> prodotti = new LinkedList<ProductDTO>();
-		String sql = "SELECT * FROM " + TABLE_NAME + "WHERE NAME LIKE ?";
+		String sql = "SELECT * FROM " + TABLE_NAME + "WHERE Nome LIKE ?";
 		try {
 			c = ds.getConnection();
 			ps = c.prepareStatement(sql);
 
-			ps.setString(1, name);
+			ps.setString(1, "%" + query + "%");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ProductDTO prodotto = new ProductDTO();
