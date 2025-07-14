@@ -31,17 +31,12 @@ public class ProductImageServlet extends HttpServlet {
             byte[] imageData = productDao.getImmagine(id);
 
             if (imageData != null && imageData.length > 0) {
-                // Imposta il tipo di contenuto corretto. Il browser capirà che è un'immagine.
-                // Per una maggiore flessibilità, potresti salvare il content-type nel DB
-                // insieme all'immagine (es. "image/jpeg", "image/png"). Per ora, usiamo jpeg.
-                response.setContentType("image/jpeg");
+                response.setContentType("image/png");
                 response.setContentLength(imageData.length);
                 
                 // Scrive i dati binari dell'immagine direttamente nello stream di output della risposta
                 response.getOutputStream().write(imageData);
             } else {
-                // Se non c'è immagine, potresti inviare un'immagine di default (placeholder)
-                // o semplicemente un errore 404.
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Immagine non trovata.");
             }
         } catch (SQLException e) {

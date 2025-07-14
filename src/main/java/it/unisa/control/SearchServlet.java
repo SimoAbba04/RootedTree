@@ -36,7 +36,7 @@ public class SearchServlet extends HttpServlet {
 
         } catch (SQLException e) {
             System.err.println("Errore durante la ricerca del prodotto: " + e.getMessage());
-            // Potresti reindirizzare a una pagina di errore
+            //reindirizzare pagina errore
             request.setAttribute("error", "Errore del database durante la ricerca.");
         }
         
