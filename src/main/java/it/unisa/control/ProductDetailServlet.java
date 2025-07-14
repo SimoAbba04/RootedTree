@@ -30,7 +30,7 @@ public class ProductDetailServlet extends HttpServlet {
 			return;
 		}
 		ServletContext context = getServletContext();
-		DataSource ds = (DataSource) context.getAttribute("Datasource");
+		DataSource ds = (DataSource) context.getAttribute("DataSource");
 		ProductDAO product = new ProductDAO(ds);
 
 		try {
