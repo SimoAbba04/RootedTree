@@ -31,39 +31,30 @@ pageContext.setAttribute("products", products);
 		onclick="plusSlides(1)">&#10095</a>
 	<script src="./scripts/slider.js"></script>
 </div>
-<div class="main-content">
-	<div class="page-container">
-		<div class="product-grid">
-			<c:choose>
-				<c:when test="${not empty products}">
-					<div class="product-grid">
-						<c:forEach var="product" items="${products}">
-							<div class="product-card">
-								<a href="ProductDetailServlet?id=${product.id}"> <img
-									src="ProductImageServlet?id=${product.id}"
-									alt="<c:out value='${product.nome}'/>" class="product-image">
-								</a>
-								<div class="product-info">
-									<h3 class="product-name">
-										<c:out value="${product.nome}" />
-									</h3>
-									<p class="product-price">
-										<fmt:setLocale value="it_IT" />
-										<fmt:formatNumber value="${product.prezzo}" type="currency"
-											currencySymbol="£ " />
-									</p>
-									<a href="ProductDetailServlet?id=${product.id}"
-										class="btn-details">Vedi Dettagli</a>
-								</div>
-							</div>
-						</c:forEach>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<p class="no-results">Nessun prodotto trovato. Prova a cercare
-						un altro termine.</p>
-				</c:otherwise>
-			</c:choose>
-		</div>
-	</div>
+<div class="page-container">
+    <h2 class="section-title">Novità</h2>
+    <c:choose>
+        <c:when test="${not empty products}">
+            <div class="product-grid">
+                <c:forEach var="product" items="${products}">
+                    <div class="product-card">
+                        <a href="ProductDetailServlet?id=${product.id}">
+                            <img src="ProductImageServlet?id=${product.id}" alt="<c:out value='${product.nome}'/>" class="product-image">
+                        </a>
+                        <div class="product-info">
+                            <h3 class="product-name"><c:out value="${product.nome}" /></h3>
+                            <p class="product-price">
+                                <fmt:setLocale value="it_IT" />
+                                <fmt:formatNumber value="${product.prezzo}" type="currency" currencySymbol="&euro" />
+                            </p>
+                            <a href="ProductDetailServlet?id=${product.id}" class="btn-details">Vedi Dettagli</a>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <p class="no-results">Nessun prodotto in evidenza.</p>
+        </c:otherwise>
+    </c:choose>
 </div>

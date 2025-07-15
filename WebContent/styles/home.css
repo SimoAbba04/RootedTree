@@ -1,42 +1,45 @@
 
-
 .mySlides {
-	display: none
+    display: none;
 }
 
 .slideshow-container {
-	max-width: 2000px;
-	position: relative;
-	margin: 2em; /* Aggiunto un po' di margine sopra e sotto */
-	max-height: 55%;   /* <-- Imposta l'altezza massima a circa il 55% dello schermo */
-	overflow: hidden;   /* Nasconde le parti dell'immagine che escono dal contenitore */
+    max-width: 100%;
+    position: relative;
+    margin: 0 auto;
+    max-height: 55vh;   
+    overflow: hidden;
 }
 
 .slideshow-container img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover; /* <-- Fondamentale: adatta l'immagine senza distorcerla */
-}
-.prev, .next {
-	cursor: pointer;
-	position: absolute;
-	top: 50%;
-	width: auto;
-	margin-top : -22px;
-	padding : 16px; 
-	color : white;
-	font-size : 10000px;
-	font-weight: bold;
-	font-size: 18px;
-	transition: 0.6s ease;
-	border-radius: 0 3px 3px 0;
-	user-select : none;
+    width: 100%;
+    height: 55vh;       
+    object-fit: cover; 
 }
 
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.3); 
+}
 
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .fade {
@@ -45,6 +48,24 @@
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from { opacity: .4 }
+  to { opacity: 1 }
+}
+.section-title {
+    display: flex; /* 1. Trasforma il titolo in un contenitore flessibile. */
+    align-items: center; /* 2. Allinea verticalmente il testo e le linee. */
+    text-align: center;
+    color: #3d4c41;
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.section-title::before,
+.section-title::after {
+    content: ''; /* È necessario per far apparire i pseudo-elementi. */
+    flex-grow: 1; /* 4. Dice alle linee di "allungarsi" per riempire lo spazio vuoto. */
+    background-color: #e0e0e0; /* Il colore della linea. */
+    height: 1px; /* Lo spessore della linea. */
+    margin: 0 1rem; /* 5. Crea un po' di spazio tra le linee e il testo "Novità". */
 }
