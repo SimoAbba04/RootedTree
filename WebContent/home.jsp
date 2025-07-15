@@ -12,7 +12,6 @@ ServletContext ct = getServletContext();
 DataSource ds = (DataSource) ct.getAttribute("DataSource");
 ProductDAO product = new ProductDAO(ds);
 Collection<ProductDTO> products = new LinkedList<ProductDTO>();
-System.out.println(products.toString());
 products = product.doRetrieveLastThreeItem();
 pageContext.setAttribute("products", products);
 %>

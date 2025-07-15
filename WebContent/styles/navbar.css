@@ -26,10 +26,8 @@
 }
 
 .logo img {
-	height: 150px; /* Dimensione del logo più realistica */
+	height: 150px; 
 	width: auto;
-	/* l'immagine potrebbe apparire leggermente schiacciata, 
-     impostare `vertical-align: middle;` può aiutare */
 	vertical-align: middle;
 }
 
@@ -37,7 +35,7 @@
 	margin-left: 40px;
 	text-decoration: none;
 	color: #3d4c41;
-	font-weight: 600; /* Leggermente meno pesante di "bold" */
+	font-weight: 600; 
 	font-size: 1.1rem;
 	transition: color 0.3s;
 }
@@ -51,9 +49,9 @@
 }
 
 .icons img {
-	height: 36px; /* Dimensioni delle icone più adatte a una navbar */
+	height: 36px; 
 	width: 36px;
-	opacity: 0.7; /* Rende le icone un po' più delicate */
+	opacity: 0.7; 
 	transition: opacity 0.3s, transform 0.2s;
 }
 
@@ -62,9 +60,9 @@
 	transform: scale(1.1);
 }
 
-/* Stili per la Search Bar */
+
 .search-bar {
-    position: relative; /* Necessario per posizionare gli elementi interni */
+    position: relative; 
 }
 
 .search-bar form {

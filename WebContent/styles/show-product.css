@@ -96,7 +96,6 @@
     background-color: #3d4c41;
 }
 
-/* Media Query per la Responsività */
 @media (max-width: 820px) {
     .detail-container {
         flex-direction: column; /* Impila le colonne su schermi piccoli */
