@@ -39,6 +39,10 @@ public class CartServlet extends HttpServlet {
                 case "add":
                     addProductToCart(productId, cart);
                     break;
+                case "update":
+                    int quantity = Integer.parseInt(request.getParameter("quantity"));
+                    cart.updateQuantity(productId, quantity);
+                    break;
                 case "remove":
                     cart.removeItem(productId);
                     break;

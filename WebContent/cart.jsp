@@ -45,9 +45,17 @@
 							</div>
 
 
-							<div class="cart-item-quantity">
-								<span>${item.quantity}</span>
+							<div class="cart-item-quantity" data-label="Quantità">
+								<form action="CartServlet" method="post" class="quantity-form">
+									<input type="hidden" name="action" value="update"> <input
+										type="hidden" name="productId" value="${item.product.id}">
+									<input type="number" name="quantity" value="${item.quantity}"
+										min="1" max="${item.product.disponibilità}"
+										class="quantity-input">
+									<button type="submit" class="btn-update">Aggiorna</button>
+								</form>
 							</div>
+
 
 							<div class="cart-item-subtotal">
 								<fmt:formatNumber value="${item.subtotal}" type="currency"
