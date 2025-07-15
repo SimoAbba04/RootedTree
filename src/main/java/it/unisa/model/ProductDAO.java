@@ -271,11 +271,11 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 	}
 	
 
-	public synchronized Collection<ProductDTO> doRetrieveLastThreeItem() throws SQLException {
+	public synchronized Collection<ProductDTO> doRetrieveLastFourItem() throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
 		Collection<ProductDTO> prodotti = new LinkedList<ProductDTO>();
-		String sql = "SELECT * FROM " + TABLE_NAME + " ORDER BY IdProdotto DESC LIMIT 3";
+		String sql = "SELECT * FROM " + TABLE_NAME + " ORDER BY IdProdotto DESC LIMIT 4";
 		try {
 			c = ds.getConnection();
 			ps = c.prepareStatement(sql);
