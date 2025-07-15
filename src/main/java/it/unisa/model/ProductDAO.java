@@ -270,18 +270,22 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 
 	}
 	
+	public synchronized Collection<ProductDTO> doRetrieveByCategory(String category) throws SQLException {
+	    Connection c = null;
+	    PreparedStatement ps = null;
+	    Collection<ProductDTO> prodotti = new LinkedList<>();
 
-	public synchronized Collection<ProductDTO> doRetrieveLastFourItem() throws SQLException {
-		Connection c = null;
-		PreparedStatement ps = null;
-		Collection<ProductDTO> prodotti = new LinkedList<ProductDTO>();
-		String sql = "SELECT * FROM " + TABLE_NAME + " ORDER BY IdProdotto DESC LIMIT 4";
-		try {
-			c = ds.getConnection();
-			ps = c.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				ProductDTO prodotto = new ProductDTO();
+	    String sql = "SELECT * FROM " + TABLE_NAME + " WHERE Categoria = ?";
+	    
+	    try {
+	        c = ds.getConnection();
+	        ps = c.prepareStatement(sql);
+	        ps.setString(1, category);
+	        
+	        ResultSet rs = ps.executeQuery();
+	        
+	        while (rs.next()) {
+	        	ProductDTO prodotto = new ProductDTO();
 				prodotto.setId(rs.getInt("IdProdotto"));
 				prodotto.setNome(rs.getString("Nome"));
 				prodotto.setDescrizione(rs.getString("Descrizione"));
@@ -289,21 +293,53 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 				prodotto.setDisponibilità(rs.getInt("Stock"));
 				prodotto.setCategoria(Categoria.fromString(rs.getString("Categoria")));
 				prodotti.add(prodotto);
-			}
+	        }
 
-		} finally {
-			try {
-				if (ps != null)
-					ps.close();
-			} finally {
-				if (c != null)
-					c.close();
-			}
-		}
-		return prodotti;
-
+	    } finally {
+	        try {
+	            if (ps != null) ps.close();
+	        } finally {
+	            if (c != null) c.close();
+	        }
+	    }
+	    return prodotti;
 	}
+	
+	public synchronized Collection<ProductDTO> doRetrieveLastFourItem() throws SQLException {
+	    Connection c = null;
+	    PreparedStatement ps = null;
+	    Collection<ProductDTO> prodotti = new LinkedList<>();
+	    
 
+	    String sql = "SELECT * FROM " + TABLE_NAME + " ORDER BY IdProdotto DESC LIMIT 4";
+	    
+	    try {
+	        c = ds.getConnection();
+	        ps = c.prepareStatement(sql);
+	        
+	        ResultSet rs = ps.executeQuery();
+	        
+	        while (rs.next()) {
+	            ProductDTO prodotto = new ProductDTO();
+	            prodotto.setId(rs.getInt("IdProdotto"));
+	            prodotto.setNome(rs.getString("Nome"));
+	            prodotto.setDescrizione(rs.getString("Descrizione"));
+	            prodotto.setPrezzo(rs.getDouble("Prezzo"));
+	            prodotto.setDisponibilità(rs.getInt("Stock"));
+	            prodotto.setCategoria(Categoria.fromString(rs.getString("Categoria")));
+	            prodotti.add(prodotto);
+	        }
+
+	    } finally {
+	        try {
+	            if (ps != null) ps.close();
+	        } finally {
+	            if (c != null) c.close();
+	        }
+	    }
+	    
+	    return prodotti;
+	}
 
 
 }
