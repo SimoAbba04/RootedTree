@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+@charset "UTF-8";
 
 * {
     box-sizing: border-box;
@@ -15,27 +15,36 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 20px; 
 }
-
 
 #form-container {
     background-color: #fdfdfa; 
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 450px; 
     text-align: center; 
 }
 
+.form-logo {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 120px;
+}
+
+.form-logo img {
+    width: 100%;
+    height: auto;
+}
 
 #form-container h2 {
     color: #3d4c41; 
     margin-bottom: 25px;
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: 600;
 }
-
 
 .form-group {
     margin-bottom: 20px;
@@ -68,9 +77,8 @@ input:focus {
     box-shadow: 0 0 5px rgba(61, 76, 65, 0.3);
 }
 
-
 input[type="submit"] {
-    background-color: #3d4c41; /* Verde scuro */
+    background-color: #3d4c41;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -87,7 +95,6 @@ input[type="submit"]:hover {
     background-color: #594a43; 
 }
 
-/* Stile per i messaggi di errore */
 .error {
     font-size: 0.85em;
     color: #d9534f;
@@ -98,4 +105,40 @@ input[type="submit"]:hover {
 
 .error.visible {
     display: block; 
+}
+
+/* Stile per l'errore restituito dal server */
+.server-error {
+    background-color: rgba(217, 83, 79, 0.1);
+    border: 1px solid rgba(217, 83, 79, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.form-switch {
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.form-switch a {
+    color: #3d4c41;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.form-switch a:hover {
+    text-decoration: underline;
+}
+
+/* --- Media Query per la Responsività --- */
+@media (max-width: 480px) {
+    #form-container {
+        padding: 25px;
+    }
+    
+    #form-container h2 {
+        font-size: 1.5em;
+    }
 }
