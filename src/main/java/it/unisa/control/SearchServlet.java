@@ -28,15 +28,18 @@ public class SearchServlet extends HttpServlet {
 			Collection<ProductDTO> products;
 			if (Categoria.fromString(searchQuery) != null) {
 				products = productDao.doRetrieveByCategory(searchQuery);
+				request.setAttribute("searchQuery","Categoria : " + searchQuery);
 			}else if (searchQuery != null && !searchQuery.trim().isEmpty()) {
 				products = productDao.doRetrieveByName(searchQuery);
+				request.setAttribute("searchQuery", searchQuery);
 			} else {
 				// Se la ricerca è vuota, mostra tutti i prodotti
 				products = productDao.doRetrieveAll("");
+				request.setAttribute("searchQuery", searchQuery);
 			}
 
 			request.setAttribute("products", products);
-			request.setAttribute("searchQuery", searchQuery);
+			
 
 		} catch (SQLException e) {
 			System.err.println("Errore durante la ricerca del prodotto: " + e.getMessage());
