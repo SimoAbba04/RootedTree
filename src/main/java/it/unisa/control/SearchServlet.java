@@ -16,38 +16,45 @@ import it.unisa.model.ProductDTO.Categoria;
 
 @WebServlet("/SearchServlet")
 public class SearchServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	  private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String searchQuery = request.getParameter("searchQuery");
-		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
-		ProductDAO productDao = new ProductDAO(ds);
+	    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	            throws ServletException, IOException {
 
-		try {
-			Collection<ProductDTO> products;
-			if (Categoria.fromString(searchQuery) != null) {
-				products = productDao.doRetrieveByCategory(searchQuery);
-				request.setAttribute("searchQuery","Categoria : " + searchQuery);
-			}else if (searchQuery != null && !searchQuery.trim().isEmpty()) {
-				products = productDao.doRetrieveByName(searchQuery);
-				request.setAttribute("searchQuery", searchQuery);
-			} else {
-				// Se la ricerca è vuota, mostra tutti i prodotti
-				products = productDao.doRetrieveAll("");
-				request.setAttribute("searchQuery", searchQuery);
-			}
+	        String searchQuery = request.getParameter("searchQuery");
+	        String categoryQuery = request.getParameter("category");
 
-			request.setAttribute("products", products);
-			
+	        DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
+	        ProductDAO productDao = new ProductDAO(ds);
 
-		} catch (SQLException e) {
-			System.err.println("Errore durante la ricerca del prodotto: " + e.getMessage());
-			// reindirizzare pagina errore
-			request.setAttribute("error", "Errore del database durante la ricerca.");
-		}
+	        try {
+	            Collection<ProductDTO> products;
+	            String pageTitle = "";
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("./searchResult.jsp");
-		dispatcher.forward(request, response);
+	            if (categoryQuery != null && !categoryQuery.trim().isEmpty()) {
+	                products = productDao.doRetrieveByCategory(categoryQuery);
+	                pageTitle = "Categoria: " + categoryQuery.substring(0, 1).toUpperCase() + categoryQuery.substring(1);
+
+	            } else if (searchQuery != null && !searchQuery.trim().isEmpty()) {
+	                products = productDao.doRetrieveByName(searchQuery);
+	                pageTitle = "Risultati per: \"" + searchQuery + "\"";
+
+	            } else {
+	                products = productDao.doRetrieveAll("Nome");
+	                pageTitle = "Tutti i Prodotti";
+	            }
+	            
+	            request.setAttribute("products", products);
+	            request.setAttribute("pageTitle", pageTitle); 
+
+	        } catch (SQLException e) {
+	            System.err.println("Errore durante la ricerca del prodotto: " + e.getMessage());
+	            request.setAttribute("error", "Errore del database durante la ricerca.");
+	            response.sendRedirect("error500.jsp");
+	            return; 
+	        }
+
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("/searchResult.jsp");
+	        dispatcher.forward(request, response);
+	    }
 	}
-}

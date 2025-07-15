@@ -70,7 +70,7 @@ pageContext.setAttribute("products", products);
 	<div class="category-container">
 
 		<div class="category-item">
-			<a href="SearchServlet?searchQuery=vaso" class="category-circle">
+			<a href="SearchServlet?category=vaso" class="category-circle">
 				<img src="./images/1.png"
 				alt="Categoria Vasi">
 			</a>
@@ -78,7 +78,7 @@ pageContext.setAttribute("products", products);
 		</div>
 
 		<div id="translated-item" class="category-item">
-			<a href="SearchServlet?searchQuery=bonsai" class="category-circle">
+			<a href="SearchServlet?category=bonsai" class="category-circle">
 				<img src="./images/1.png"
 				alt="Categoria Bonsai">
 			</a>
@@ -86,7 +86,7 @@ pageContext.setAttribute("products", products);
 		</div>
 
 		<div class="category-item">
-			<a href="SearchServlet?searchQuery=cura" class="category-circle">
+			<a href="SearchServlet?category=cura" class="category-circle">
 				<img src="./images/1.png"
 				alt="Categoria Cura">
 			</a>

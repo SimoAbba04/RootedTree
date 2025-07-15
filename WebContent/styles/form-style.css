@@ -30,13 +30,13 @@ body {
 
 .form-logo {
     display: block;
-    margin: 0 auto 20px auto;
+    margin-left: 60px;
     width: 120px;
 }
 
 .form-logo img {
-    width: 100%;
-    height: auto;
+    width: 250px;
+    height: 250px;
 }
 
 #form-container h2 {

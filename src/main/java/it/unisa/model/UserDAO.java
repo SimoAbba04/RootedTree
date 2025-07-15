@@ -160,23 +160,22 @@ public class UserDAO implements IBeanDao<UserDTO> {
 	public synchronized UserDTO doRetrieveByMail(String email) throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
-		UserDTO user = new UserDTO();
+		UserDTO user = null;
 
-		String sql = "SELECT * FROM" + " WHERE Email = ?";
+		String sql = "SELECT * FROM " + TABLE_NAME + " WHERE Email = ?";
 
 		try {
 			c = ds.getConnection();
 			ps = c.prepareStatement(sql);
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
-			if (rs.isBeforeFirst()) {
-				return null;
-			}
-			while (rs.next()) {
+			
+			if (rs.next()) {
 				user.setID(rs.getInt("IdAccount"));
 				user.setNome(rs.getString("Nome"));
 				user.setCognome(rs.getString("Cognome"));
 				user.setEmail(rs.getString("Email"));
+				user.setPassword(rs.getString("Pw"));
 				user.setDataNascita(rs.getDate("DataNascita"));
 				user.setRuolo(Ruolo.fromString(rs.getString("Ruolo")));
 			}
