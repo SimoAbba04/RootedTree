@@ -18,7 +18,7 @@
         </div>
         
         <div class="icons">
-            <a href=".jsp">
+            <a href="login.jsp">
                 <img src="<%=request.getContextPath()%>/images/login.svg" alt="Login">
             </a>
             <a href="cart.jsp">

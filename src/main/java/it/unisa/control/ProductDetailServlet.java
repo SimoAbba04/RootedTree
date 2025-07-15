@@ -45,7 +45,7 @@ public class ProductDetailServlet extends HttpServlet {
 			request.setAttribute("error", "Errore recupero prodotto.");
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/product-detail.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/productDetail.jsp");
 		dispatcher.forward(request, response);
 	}
 
