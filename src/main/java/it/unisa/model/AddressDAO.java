@@ -1,4 +1,4 @@
-package it.unisa.control;
+package it.unisa.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -155,7 +155,7 @@ public class AddressDAO implements IBeanDao<AddressDTO> {
         return addresses;
     }
     
- //non so se mi servirà mai
+
     public synchronized Collection<AddressDTO> doRetrieveByAccount(int accountId) throws SQLException {
         Connection c = null;
         PreparedStatement ps = null;

@@ -15,10 +15,11 @@ public class OrderDetailDAO {
         this.ds = ds;
     }
 
-    public synchronized void doSave(OrderDetailDTO dettaglio) throws SQLException {
+    public synchronized int doSave(OrderDetailDTO dettaglio) throws SQLException {
         Connection c = null;
         PreparedStatement ps = null;
         String sql = "INSERT INTO " + TABLE_NAME + " (IdOrdine, IdProdotto, Quantita, PrezzoUnitario) VALUES (?, ?, ?, ?)";
+        int generatedId = -1;
         try {
             c = ds.getConnection();
             ps = c.prepareStatement(sql);
@@ -27,6 +28,10 @@ public class OrderDetailDAO {
             ps.setInt(3, dettaglio.getQta());
             ps.setDouble(4, dettaglio.getPrezzoUnitario());
             ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+			if (rs.next()) {
+				generatedId = rs.getInt(1);
+			}
         } finally {
         	try {
 				if (ps != null)
@@ -36,6 +41,7 @@ public class OrderDetailDAO {
 					c.close();
 			}
         }
+        return generatedId;
     }
 
     public synchronized Collection<OrderDetailDTO> doRetrieveByOrdine(int ordineId) throws SQLException {
