@@ -20,12 +20,9 @@
         <div class="page-container">
             <h1 class="page-title">
                 <c:choose>
-                    <c:when test="${not empty searchQuery}">
-                        Risultati per: "<strong><c:out value="${searchQuery}" /></strong>"
+                    <c:when test="${not empty pageTitle}">
+                      <c:out value="${pageTitle}" />
                     </c:when>
-                    <c:otherwise>
-                        Tutti i Prodotti
-                    </c:otherwise>
                 </c:choose>
             </h1>
 

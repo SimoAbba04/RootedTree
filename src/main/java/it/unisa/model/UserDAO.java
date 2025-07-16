@@ -171,6 +171,7 @@ public class UserDAO implements IBeanDao<UserDTO> {
 			ResultSet rs = ps.executeQuery();
 			
 			if (rs.next()) {
+				user = new UserDTO();
 				user.setID(rs.getInt("IdAccount"));
 				user.setNome(rs.getString("Nome"));
 				user.setCognome(rs.getString("Cognome"));

@@ -38,10 +38,11 @@ public class SearchServlet extends HttpServlet {
 	            } else if (searchQuery != null && !searchQuery.trim().isEmpty()) {
 	                products = productDao.doRetrieveByName(searchQuery);
 	                pageTitle = "Risultati per: \"" + searchQuery + "\"";
-
+	                
 	            } else {
 	                products = productDao.doRetrieveAll("Nome");
 	                pageTitle = "Tutti i Prodotti";
+
 	            }
 	            
 	            request.setAttribute("products", products);

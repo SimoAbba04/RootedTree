@@ -26,7 +26,6 @@ public class LoginServlet extends HttpServlet {
 
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		UserDAO userDao = new UserDAO(ds);
-
 		try {
 
 			UserDTO user = userDao.doRetrieveByMail(email);
