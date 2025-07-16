@@ -49,7 +49,7 @@ pageContext.setAttribute("products", products);
 							<p class="product-price">
 								<fmt:setLocale value="it_IT" />
 								<fmt:formatNumber value="${product.prezzo}" type="currency"
-									currencySymbol="&euro" />
+									currencySymbol="&#8364" />
 							</p>
 							<a href="ProductDetailServlet?id=${product.id}"
 								class="btn-details">Vedi Dettagli</a>
