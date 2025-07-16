@@ -101,3 +101,5 @@ function validateAge(dateElement, errorElement) {
 		return false;
 	}
 }
+
+
