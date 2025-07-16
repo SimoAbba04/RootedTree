@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="./styles/notification.css">
 </head>
 <body>
-    <%@ include file="navbar.jsp" %>
+    <%@ include file="../navbar.jsp" %>
 
     <main class="main-content">
         <div class="account-container">
@@ -143,7 +143,7 @@
         </div>
     </main>
 
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
     <script src="./scripts/formValidation.js"></script>
 </body>
 </html>
