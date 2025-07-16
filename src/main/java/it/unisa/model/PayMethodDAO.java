@@ -174,4 +174,30 @@ public class PayMethodDAO implements IBeanDao<PayMethodDTO> {
         }
         return paymentMethod;
     }
+    
+    public synchronized void doUpdate(PayMethodDTO paymentMethod) throws SQLException {
+        Connection c = null;
+        PreparedStatement ps = null;
+
+        String updateSql = "UPDATE " + TABLE_NAME 
+                         + " SET NumeroCarta = ?, DataScadenza = ?, CodiceSicurezza = ?, Titolare = ? WHERE IdPagamento = ?";
+
+        try {
+            c = ds.getConnection();
+            ps = c.prepareStatement(updateSql);
+            ps.setString(1, paymentMethod.getNumeroCarta());
+            ps.setDate(2, paymentMethod.getDataScadenza());
+            ps.setString(3, paymentMethod.getCodiceSicurezza());
+            ps.setString(4, paymentMethod.getTitolare());
+            ps.setInt(5, paymentMethod.getId()); 
+            
+            ps.executeUpdate();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } finally {
+                if (c != null) c.close();
+            }
+        }
+    }
 }

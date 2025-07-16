@@ -156,10 +156,10 @@ public class AddressDAO implements IBeanDao<AddressDTO> {
     }
     
 
-    public synchronized Collection<AddressDTO> doRetrieveByAccount(int accountId) throws SQLException {
+    public synchronized AddressDTO doRetrieveByAccount(int accountId) throws SQLException {
         Connection c = null;
         PreparedStatement ps = null;
-        Collection<AddressDTO> addresses = new LinkedList<>();
+        AddressDTO address = null;
 
         String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE IdAccount = ?";
 
@@ -169,8 +169,8 @@ public class AddressDAO implements IBeanDao<AddressDTO> {
             ps.setInt(1, accountId);
             
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                AddressDTO address = new AddressDTO();
+            if (rs.next()) {
+                address = new AddressDTO();
                 address.setId(rs.getInt("IdIndirizzo"));
                 address.setStato(rs.getString("Stato"));
                 address.setProvincia(rs.getString("Provincia"));
@@ -180,7 +180,6 @@ public class AddressDAO implements IBeanDao<AddressDTO> {
                 address.setDescrizione(rs.getString("Descrizione"));
                 address.setNumeroTelefono(rs.getString("NumeroTelefono"));
                 address.setIdUtente(rs.getInt("IdAccount"));
-                addresses.add(address);
             }
         } finally {
             try {
@@ -189,6 +188,36 @@ public class AddressDAO implements IBeanDao<AddressDTO> {
                 if (c != null) c.close();
             }
         }
-        return addresses;
+        return address;
+    }
+    
+    
+    public synchronized void doUpdate(AddressDTO address) throws SQLException {
+        Connection c = null;
+        PreparedStatement ps = null;
+
+        String updateSql = "UPDATE " + TABLE_NAME 
+                         + " SET Stato = ?, Provincia = ?, Città = ?, Via = ?, CAP = ?, Descrizione = ?, NumeroTelefono = ? WHERE IdIndirizzo = ?";
+
+        try {
+            c = ds.getConnection();
+            ps = c.prepareStatement(updateSql);
+            ps.setString(1, address.getStato());
+            ps.setString(2, address.getProvincia());
+            ps.setString(3, address.getCittà());
+            ps.setString(4, address.getCAP());
+            ps.setString(5, address.getDescrizione());
+            ps.setString(6, address.getNumeroTelefono());
+            ps.setInt(7, address.getIdUtente());
+            ps.setInt(8, address.getId()); // Usa l'ID per la clausola WHERE
+            
+            ps.executeUpdate();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } finally {
+                if (c != null) c.close();
+            }
+        }
     }
 }

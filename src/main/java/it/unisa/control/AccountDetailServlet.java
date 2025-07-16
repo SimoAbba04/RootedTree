@@ -1,4 +1,4 @@
-package it.unisa.project;
+package it.unisa.control;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

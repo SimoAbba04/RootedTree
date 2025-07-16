@@ -191,5 +191,32 @@ public class UserDAO implements IBeanDao<UserDTO> {
 		}
 		return user;
 	}
+	
+	 public synchronized void doUpdate(UserDTO user) throws SQLException {
+	        Connection c = null;
+	        PreparedStatement ps = null;
+
+	        String updateSql = "UPDATE " + TABLE_NAME 
+	                         + " SET Nome = ?, Cognome = ?, Email = ?, Pw = ?, DataNascita = ? WHERE IdIndirizzo = ?";
+
+	        try {
+	            c = ds.getConnection();
+	            ps = c.prepareStatement(updateSql);
+	            ps.setString(1, user.getNome());
+	            ps.setString(2, user.getCognome());
+	            ps.setString(3, user.getEmail());
+	            ps.setString(4, user.getPassword());
+	            ps.setDate(5, user.getDataNascita());
+	            ps.setInt(6, user.getID()); 
+	            
+	            ps.executeUpdate();
+	        } finally {
+	            try {
+	                if (ps != null) ps.close();
+	            } finally {
+	                if (c != null) c.close();
+	            }
+	        }
+	    }
 
 }
