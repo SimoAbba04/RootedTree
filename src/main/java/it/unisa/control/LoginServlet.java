@@ -10,6 +10,11 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.sql.DataSource;
+
+import it.unisa.model.AddressDAO;
+import it.unisa.model.AddressDTO;
+import it.unisa.model.PayMethodDAO;
+import it.unisa.model.PayMethodDTO;
 import it.unisa.model.UserDAO;
 import it.unisa.model.UserDTO;
 import it.unisa.model.UserDTO.Ruolo;
@@ -47,6 +52,19 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("isAdmin", true);
 				} else {
 					session.setAttribute("isAdmin", false);
+				}
+
+				AddressDAO addressDao = new AddressDAO(ds);
+				PayMethodDAO paymentDao = new PayMethodDAO(ds);
+
+				AddressDTO address = addressDao.doRetrieveByAccount(user.getID());
+				PayMethodDTO payment = paymentDao.doRetrieveByAccount(user.getID());
+
+				if (address != null) {
+					session.setAttribute("address", address);
+				}
+				if (payment != null) {
+					session.setAttribute("payment", payment);
 				}
 
 				response.sendRedirect(request.getContextPath() + "/common/index.jsp");

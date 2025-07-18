@@ -52,7 +52,7 @@ public class MainContext implements ServletContextListener {
             InputStream imgStream = null;
             
 
-            String imagePath = "/images/1.png"; 
+            String imagePath = "/images/" + i + ".png"; 
             imgStream = context.getResourceAsStream(imagePath);
             
             if (imgStream != null) {

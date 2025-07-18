@@ -13,13 +13,13 @@ pageContext.setAttribute("products", products);
 
 <div class="slideshow-container">
 	<div class="mySlides fade">
-		<a href="#"> <img src="<%=request.getContextPath()%>/images/slider1.png" alt="Chi Siamo"></a>
+		<a href="#"> <img src="<%=request.getContextPath()%>/images/slider4.png" alt="Chi Siamo"></a>
 	</div>
 	<div class="mySlides fade">
 		<a href="#"><img src="<%=request.getContextPath()%>/images/slider2.png"></a>
 	</div>
 	<div class="mySlides fade">
-		<a href="#"><img src="<%=request.getContextPath()%>/images/slider4.png"></a>
+		<a href="#"><img src="<%=request.getContextPath()%>/images/slider3.png"></a>
 	</div>
 	<a class="prev" onclick="plusSlides(-1)">&#10094</a> <a class="next"
 		onclick="plusSlides(1)">&#10095</a>
@@ -63,7 +63,7 @@ pageContext.setAttribute("products", products);
 	<div class="category-container">
 		<div class="category-item">
 			<a href="<%=request.getContextPath()%>/SearchServlet?category=vaso" class="category-circle">
-				<img src="<%=request.getContextPath()%>/images/1.png" alt="Categoria Vasi">
+				<img src="<%=request.getContextPath()%>/images/19.png" alt="Categoria Vasi">
 			</a>
 			<div class="category-label">Vasi</div>
 		</div>
@@ -75,7 +75,7 @@ pageContext.setAttribute("products", products);
 		</div>
 		<div class="category-item">
 			<a href="<%=request.getContextPath()%>/SearchServlet?category=cura" class="category-circle">
-				<img src="<%=request.getContextPath()%>/images/1.png" alt="Categoria Cura">
+				<img src="<%=request.getContextPath()%>/images/23.png" alt="Categoria Cura">
 			</a>
 			<div class="category-label">Cura</div>
 		</div>
