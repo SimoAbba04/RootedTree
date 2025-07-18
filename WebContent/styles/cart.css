@@ -14,7 +14,6 @@
     padding-bottom: 1rem;
 }
 
-/* --- Layout Desktop (invariato) --- */
 .cart-grid {
     display: grid;
     grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
@@ -97,43 +96,42 @@
     background-color: #e0e0e0;
 }
 
-/* --- Layout Mobile Semplificato --- */
+
 @media (max-width: 768px) {
     .cart-grid {
         display: block; 
     }
 
     .cart-header {
-        display: none; /* Nascondi le intestazioni del desktop */
+        display: none; 
     }
 
-    /* Trasforma ogni riga di prodotto in una "card" */
+ 
     .cart-item-image, .cart-item-price, .cart-item-quantity, .cart-item-subtotal, .cart-item-remove {
         display: flex;
-        justify-content: space-between; /* Allinea etichetta (a sx) e valore (a dx) */
+        justify-content: space-between; 
         align-items: center;
         padding: 0.8rem 0;
         border-bottom: 1px solid #e0e0e0;
     }
     
-    /* Aggiungi le etichette con il CSS per chiarezza */
     .cart-item-price::before { content: 'Prezzo'; font-weight: 600; }
     .cart-item-quantity::before { content: 'Quantità'; font-weight: 600; }
     .cart-item-subtotal::before { content: 'Subtotale'; font-weight: 600; }
 
-    /* Stile specifico per l'immagine del prodotto */
+
     .cart-item-image {
         justify-content: flex-start; /* Allinea a sinistra */
         font-size: 1.1rem;
         font-weight: bold;
     }
     
-    /* Rimuovi l'etichetta per il pulsante di rimozione */
+
     .cart-item-remove::before {
         content: '';
     }
     
-    /* Aggiungi uno spazio più marcato tra i diversi prodotti */
+
     .cart-item-remove {
         margin-bottom: 2rem;
         border-bottom: 2px solid #3d4c41;

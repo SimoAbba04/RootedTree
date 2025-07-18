@@ -9,14 +9,14 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!searchBar.classList.contains("active")) {
             event.preventDefault(); // Previene l'invio del form al primo click
             searchBar.classList.add("active");
-            searchInput.focus(); // Mette il focus sull'input
+            searchInput.focus();
         }
-        // Se l'input è vuoto quando si clicca, non invia il form
+        
         else if (searchInput.value.trim() === "") {
              event.preventDefault();
              searchBar.classList.remove("active");
         }
-        // Altrimenti, il form verrà inviato normalmente
+        
     });
 
     // Chiude la barra di ricerca se si clicca fuori

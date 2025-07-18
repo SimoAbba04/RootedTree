@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="./styles/notification.css">
 </head>
 <body>
-    <%@ include file="../navbar.jsp" %>
+    <%@ include file="navbar.jsp" %>
 
     <main class="main-content">
         <div class="account-container">
@@ -23,7 +23,7 @@
             <c:if test="${not empty successMessage}"><div class="notification success">${successMessage}</div></c:if>
             <c:if test="${not empty errorMessage}"><div class="notification error">${errorMessage}</div></c:if>
 
-            <!-- Sezione 1: Dati del Profilo -->
+
             <section class="account-section">
                 <h2>I Tuoi Dati</h2>
                 <form id="profileForm" action="account" method="post" onsubmit="return validateProfileForm()">
@@ -69,43 +69,59 @@
                 </form>
             </section>
 
-            <!-- Sezione 2: Indirizzo di Spedizione -->
+
             <section class="account-section">
                 <h2>Indirizzo di Spedizione</h2>
                 <form id="addressForm" action="account" method="post" onsubmit="return validateAddressForm()">
                     <input type="hidden" name="action" value="updateAddress">
                     <input type="hidden" name="addressId" value="${address.id}">
+                    
+                    <div class="form-group">
+                        <label for="stato">Stato</label>
+                        <input type="text" id="stato" name="stato" value="<c:out value='${address.stato}'/>" required 
+                               oninput="validaElem(this, this.nextElementSibling, stateErrorMessage)" pattern="^[A-Z][a-zA-Z\s']*$">
+                        <div class="error"></div>
+                    </div>
                     <div class="form-group">
                         <label for="via">Via e Numero Civico</label>
                         <input type="text" id="via" name="via" value="<c:out value='${address.via}'/>" required 
-                               oninput="validaElem(this, this.nextElementSibling, 'Formato non valido.')">
+                               oninput="validaElem(this, this.nextElementSibling, streetErrorMessage)" pattern="^[A-Za-z\s.,'0-9/]+$">
                         <div class="error"></div>
                     </div>
                     <div class="form-group">
                         <label for="citta">Città</label>
                         <input type="text" id="citta" name="citta" value="<c:out value='${address.città}'/>" required 
-                               oninput="validaElem(this, this.nextElementSibling, nameOrLastnameErrorMessage)" pattern="^[A-Z][a-zA-Z\s]*$">
+                               oninput="validaElem(this, this.nextElementSibling, cityErrorMessage)" pattern="^[A-Z][a-zA-Z\s']*$">
                         <div class="error"></div>
                     </div>
                     <div class="form-group-inline">
                         <div class="form-group">
                             <label for="provincia">Provincia</label>
                             <input type="text" id="provincia" name="provincia" value="<c:out value='${address.provincia}'/>" required 
-                                   oninput="validaElem(this, this.nextElementSibling, 'Inserire 2 lettere maiuscole.')" pattern="^[A-Z]{2}$">
+                                   oninput="validaElem(this, this.nextElementSibling, provinceErrorMessage)" pattern="^[A-Z]{2}$">
                             <div class="error"></div>
                         </div>
                         <div class="form-group">
                             <label for="cap">CAP</label>
                             <input type="text" id="cap" name="cap" value="<c:out value='${address.CAP}'/>" required 
-                                   oninput="validaElem(this, this.nextElementSibling, 'Inserire 5 cifre.')" pattern="^\d{5}$">
+                                   oninput="validaElem(this, this.nextElementSibling, capErrorMessage)" pattern="^\d{5}$">
                             <div class="error"></div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="numeroTelefono">Numero di Telefono (opzionale)</label>
+                        <input type="tel" id="numeroTelefono" name="numeroTelefono" value="<c:out value='${address.numeroTelefono}'/>" 
+                               oninput="validaElem(this, this.nextElementSibling, phoneErrorMessage)" pattern="^[\d\s]{9,15}$">
+                        <div class="error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descrizione">Descrizione (opzionale)</label>
+                        <input type="text" id="descrizione" name="descrizione" value="<c:out value='${address.descrizione}'/>" placeholder="Es. Citofonare a Rossi">
                     </div>
                     <button type="submit" class="btn-primary">Salva Indirizzo</button>
                 </form>
             </section>
 
-            <!-- Sezione 3: Metodo di Pagamento -->
             <section class="account-section">
                 <h2>Metodo di Pagamento</h2>
                 <form id="paymentForm" action="account" method="post" onsubmit="return validatePaymentForm()">
@@ -114,26 +130,26 @@
                     <div class="form-group">
                         <label for="titolare">Titolare Carta</label>
                         <input type="text" id="titolare" name="titolare" value="<c:out value='${payment.titolare}'/>" required 
-                               oninput="validaElem(this, this.nextElementSibling, nameOrLastnameErrorMessage)" pattern="^[A-Z][a-zA-Z\s]*$">
+                               oninput="validaElem(this, this.nextElementSibling, cardHolderErrorMessage)" pattern="^[A-Z][a-zA-Z\s]*$">
                         <div class="error"></div>
                     </div>
                     <div class="form-group">
                         <label for="numeroCarta">Numero Carta</label>
                         <input type="text" id="numeroCarta" name="numeroCarta" value="<c:out value='${payment.numeroCarta}'/>" required 
-                               oninput="validaElem(this, this.nextElementSibling, 'Inserire 16 cifre.')" pattern="^\d{16}$">
+                               oninput="validaElem(this, this.nextElementSibling, cardNumberErrorMessage)" pattern="^\d{16}$">
                         <div class="error"></div>
                     </div>
                     <div class="form-group-inline">
                         <div class="form-group">
                             <label for="dataScadenza">Data Scadenza (MM/AA)</label>
                             <input type="text" id="dataScadenza" name="dataScadenza" value="<c:out value='${payment.dataScadenza}'/>" required 
-                                   oninput="validaElem(this, this.nextElementSibling, 'Formato MM/AA non valido.')" pattern="^(0[1-9]|1[0-2])\/\d{2}$">
+                                   oninput="validaElem(this, this.nextElementSibling, expiryDateErrorMessage)" pattern="^(0[1-9]|1[0-2])\/\d{2}$">
                             <div class="error"></div>
                         </div>
                         <div class="form-group">
                             <label for="cvv">CVV</label>
                             <input type="password" id="cvv" name="cvv" value="<c:out value='${payment.codiceSicurezza}'/>" required 
-                                   oninput="validaElem(this, this.nextElementSibling, 'Inserire 3 cifre.')" pattern="^\d{3}$">
+                                   oninput="validaElem(this, this.nextElementSibling, cvvErrorMessage)" pattern="^\d{3}$">
                             <div class="error"></div>
                         </div>
                     </div>
@@ -143,7 +159,7 @@
         </div>
     </main>
 
-    <%@ include file="../footer.jsp" %>
+    <%@ include file="footer.jsp" %>
     <script src="./scripts/formValidation.js"></script>
 </body>
 </html>

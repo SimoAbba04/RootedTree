@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+/* Stili per la pagina "Il Mio Account" */
+
+/* --- 1. Struttura Generale della Pagina --- */
+.account-container {
+    max-width: 800px; /* Un po' più largo di un form singolo */
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: #3d4c41;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* --- 2. Stile delle Sezioni ("Card") --- */
+.account-section {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem; /* Spazio tra una sezione e l'altra */
+}
+
+.account-section h2 {
+    font-size: 1.5rem;
+    color: #3d4c41;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- 3. Stili per i Form (Riciclati e Adattati) --- */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #3d4c41;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3d4c41; 
+    box-shadow: 0 0 5px rgba(61, 76, 65, 0.3);
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #4a6853;
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #3d4c41;
+}
+
+/* --- 4. Stili per Dettagli Specifici --- */
+.form-group-inline {
+    display: flex;
+    gap: 1rem; /* Spazio tra i campi sulla stessa riga */
+}
+
+.form-group-inline .form-group {
+    flex: 1; /* Fa in modo che i campi occupino lo stesso spazio */
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #3d4c41;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.form-hint {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+/* --- 5. Responsività --- */
+@media (max-width: 600px) {
+    .account-container {
+        padding: 0 1rem;
+    }
+
+    .account-section {
+        padding: 1.5rem;
+    }
+
+    /* Manda a capo i campi che erano sulla stessa riga */
+    .form-group-inline {
+        flex-direction: column;
+        gap: 0;
+    }
+}
