@@ -23,7 +23,6 @@
             <c:if test="${not empty successMessage}"><div class="notification success">${successMessage}</div></c:if>
             <c:if test="${not empty errorMessage}"><div class="notification error">${errorMessage}</div></c:if>
 
-
             <section class="account-section">
                 <h2>I Tuoi Dati</h2>
                 <form id="profileForm" action="account" method="post" onsubmit="return validateProfileForm()">
@@ -68,7 +67,6 @@
                     <button type="submit" class="btn-primary">Salva Dati Profilo</button>
                 </form>
             </section>
-
 
             <section class="account-section">
                 <h2>Indirizzo di Spedizione</h2>
@@ -122,6 +120,7 @@
                 </form>
             </section>
 
+
             <section class="account-section">
                 <h2>Metodo di Pagamento</h2>
                 <form id="paymentForm" action="account" method="post" onsubmit="return validatePaymentForm()">
@@ -141,9 +140,9 @@
                     </div>
                     <div class="form-group-inline">
                         <div class="form-group">
-                            <label for="dataScadenza">Data Scadenza (MM/AA)</label>
-                            <input type="text" id="dataScadenza" name="dataScadenza" value="<c:out value='${payment.dataScadenza}'/>" required 
-                                   oninput="validaElem(this, this.nextElementSibling, expiryDateErrorMessage)" pattern="^(0[1-9]|1[0-2])\/\d{2}$">
+                            <label for="dataScadenza">Data Scadenza</label>
+                            <input type="date" id="dataScadenza" name="dataScadenza" value="${payment.dataScadenza}" required 
+                                   oninput="validateExpiryDateField(this)">
                             <div class="error"></div>
                         </div>
                         <div class="form-group">
