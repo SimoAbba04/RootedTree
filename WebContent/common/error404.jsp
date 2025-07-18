@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina Non Trovata - RootedTree</title>
-    <link rel="stylesheet" href="../styles/index.css">
-    <link rel="stylesheet" href="../styles/navbar.css">
-    <link rel="stylesheet" href="../styles/footer.css">
-    <link rel="stylesheet" href="../styles/error-page.css"> <%-- Nuovo file CSS --%>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/error-page.css"> <%-- Nuovo file CSS --%>
 </head>
 <body>
     <%@ include file="navbar.jsp" %>

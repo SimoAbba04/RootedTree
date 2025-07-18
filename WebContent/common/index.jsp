@@ -5,20 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>RootedTree - Bonsai Shop</title>
-<link rel="icon" type="image/x-icon"
-	href="/images/rootedTreeFavicon.svg">
-<link rel="stylesheet" href="../styles/index.css">
-<link rel="stylesheet" href="../styles/navbar.css">
-<link rel="stylesheet" href="../styles/home.css">
-<link rel="stylesheet" href="../styles/footer.css">
-<link rel="stylesheet" href="../styles/result.css">
+<link rel="icon" type="image/x-icon" href="<%=request.getContextPath()%>/images/rootedTreeFavicon.svg">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/index.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/navbar.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/home.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/footer.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/result.css">
 </head>
 <body>
-	<%@ include file="navbar.jsp"%>
+	<%@ include file="/common/navbar.jsp"%>
 	<main class="main-content">
-		<%@ include file="home.jsp"%>
+		<%@ include file="/common/home.jsp"%>
 	</main>
-	<%@ include file="footer.jsp"%>
-	
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>

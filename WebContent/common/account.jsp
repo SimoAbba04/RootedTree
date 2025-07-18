@@ -7,25 +7,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Il Mio Account - RootedTree</title>
-<link rel="stylesheet" href="../styles/index.css">
-<link rel="stylesheet" href="../styles/navbar.css">
-<link rel="stylesheet" href="../styles/footer.css">
-<link rel="stylesheet" href="../styles/account.css">
-<link rel="stylesheet" href="../styles/notification.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/index.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/navbar.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/footer.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/account.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/notification.css">
 </head>
 <body>
-    <%@ include file="navbar.jsp" %>
-
+    <%@ include file="/common/navbar.jsp" %>
     <main class="main-content">
         <div class="account-container">
             <h1 class="page-title">Il Mio Account</h1>
-            
             <c:if test="${not empty successMessage}"><div class="notification success">${successMessage}</div></c:if>
             <c:if test="${not empty errorMessage}"><div class="notification error">${errorMessage}</div></c:if>
-
             <section class="account-section">
                 <h2>I Tuoi Dati</h2>
-                <form id="profileForm" action="account" method="post" onsubmit="return validateProfileForm()">
+                <form id="profileForm" action="<%=request.getContextPath()%>/account" method="post" onsubmit="return validateProfileForm()">
                     <input type="hidden" name="action" value="updateProfile">
                     <div class="form-group">
                         <label for="Fnome">Nome</label>
@@ -67,13 +64,11 @@
                     <button type="submit" class="btn-primary">Salva Dati Profilo</button>
                 </form>
             </section>
-
             <section class="account-section">
                 <h2>Indirizzo di Spedizione</h2>
-                <form id="addressForm" action="account" method="post" onsubmit="return validateAddressForm()">
+                <form id="addressForm" action="<%=request.getContextPath()%>/account" method="post" onsubmit="return validateAddressForm()">
                     <input type="hidden" name="action" value="updateAddress">
                     <input type="hidden" name="addressId" value="${address.id}">
-                    
                     <div class="form-group">
                         <label for="stato">Stato</label>
                         <input type="text" id="stato" name="stato" value="<c:out value='${address.stato}'/>" required 
@@ -119,11 +114,9 @@
                     <button type="submit" class="btn-primary">Salva Indirizzo</button>
                 </form>
             </section>
-
-
             <section class="account-section">
                 <h2>Metodo di Pagamento</h2>
-                <form id="paymentForm" action="account" method="post" onsubmit="return validatePaymentForm()">
+                <form id="paymentForm" action="<%=request.getContextPath()%>/account" method="post" onsubmit="return validatePaymentForm()">
                     <input type="hidden" name="action" value="updatePayment">
                     <input type="hidden" name="paymentId" value="${payment.id}">
                     <div class="form-group">
@@ -157,8 +150,7 @@
             </section>
         </div>
     </main>
-
-    <%@ include file="footer.jsp" %>
-    <script src="./scripts/formValidation.js"></script>
+    <%@ include file="/common/footer.jsp" %>
+    <script src="<%=request.getContextPath()%>/scripts/formValidation.js"></script>
 </body>
 </html>

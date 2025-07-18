@@ -5,21 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Siamo - RootedTree</title>
-    <link rel="stylesheet" href="../styles/index.css">
-    <link rel="stylesheet" href="../styles/navbar.css">
-    <link rel="stylesheet" href="../styles/footer.css">
-    <link rel="stylesheet" href="../styles/discover-us.css"> 
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/index.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/navbar.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/footer.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/discover-us.css"> 
 </head>
 <body>
-    <%@ include file="navbar.jsp" %>
-
+    <%@ include file="/common/navbar.jsp" %>
     <main class="main-content">
         <div class="about-container">
             <h1 class="page-title">Le Radici della Nostra Passione</h1>
-
             <section class="about-section">
                 <div class="about-image">
-                    <img src="https://placehold.co/600x400/A3B18A/344E41?text=Mani+che+curano+un+bonsai" alt="Mani esperte che curano un bonsai">
+                    <img src="<%=request.getContextPath()%>/images/discover-1.jpg" alt="Mani esperte che curano un bonsai">
                 </div>
                 <div class="about-text">
                     <h2>Un'Arte che Cresce con Pazienza</h2>
@@ -31,10 +29,9 @@
                     </p>
                 </div>
             </section>
-
             <section class="about-section reverse">
                 <div class="about-image">
-                    <img src="https://placehold.co/600x400/588157/FFFFFF?text=Serra+con+molti+bonsai" alt="Serra luminosa con una vasta selezione di bonsai">
+                    <img src="<%=request.getContextPath()%>/images/discover-2.jpg" alt="Serra luminosa con una vasta selezione di bonsai">
                 </div>
                 <div class="about-text">
                     <h2>Qualità e Comunità al Vostro Servizio</h2>
@@ -46,10 +43,8 @@
                     </p>
                 </div>
             </section>
-
         </div>
     </main>
-
-    <%@ include file="footer.jsp" %>
+    <%@ include file="/common/footer.jsp" %>
 </body>
 </html>

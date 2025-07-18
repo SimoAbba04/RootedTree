@@ -1,35 +1,29 @@
-
-
-
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page
-	import="java.util.LinkedList, java.util.List, java.util.Arrays, java.util.Collection, it.unisa.model.ProductDAO, it.unisa.model.ProductDTO, javax.sql.DataSource"%>
+	import="java.util.LinkedList, java.util.Collection, it.unisa.model.ProductDAO, it.unisa.model.ProductDTO, javax.sql.DataSource"%>
 
 <%
-ServletContext ct = getServletContext();
-DataSource ds = (DataSource) ct.getAttribute("DataSource");
+DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 ProductDAO product = new ProductDAO(ds);
-Collection<ProductDTO> products = new LinkedList<ProductDTO>();
-products = product.doRetrieveLastFourItem();
+Collection<ProductDTO> products = product.doRetrieveLastFourItem();
 pageContext.setAttribute("products", products);
 %>
 
 
 <div class="slideshow-container">
 	<div class="mySlides fade">
-		<a href="#"> <img src="./images/slider1.png" alt="Chi Siamo"></a>
+		<a href="#"> <img src="<%=request.getContextPath()%>/images/slider1.png" alt="Chi Siamo"></a>
 	</div>
 	<div class="mySlides fade">
-		<a href="#"><img src="./images/slider2.png"></a>
+		<a href="#"><img src="<%=request.getContextPath()%>/images/slider2.png"></a>
 	</div>
 	<div class="mySlides fade">
-		<a href="#"><img src="./images/slider4.png"></a>
+		<a href="#"><img src="<%=request.getContextPath()%>/images/slider4.png"></a>
 	</div>
 	<a class="prev" onclick="plusSlides(-1)">&#10094</a> <a class="next"
 		onclick="plusSlides(1)">&#10095</a>
-	<script src="./scripts/slider.js"></script>
+	<script src="<%=request.getContextPath()%>/scripts/slider.js"></script>
 </div>
 <div class="page-container">
 	<h2 class="section-title">Novità</h2>
@@ -38,8 +32,8 @@ pageContext.setAttribute("products", products);
 			<div class="product-grid">
 				<c:forEach var="product" items="${products}">
 					<div class="product-card">
-						<a href="ProductDetailServlet?id=${product.id}"> <img
-							src="ProductImageServlet?id=${product.id}"
+						<a href="<%=request.getContextPath()%>/ProductDetailServlet?id=${product.id}"> <img
+							src="<%=request.getContextPath()%>/ProductImageServlet?id=${product.id}"
 							alt="<c:out value='${product.nome}'/>" class="product-image">
 						</a>
 						<div class="product-info">
@@ -49,9 +43,9 @@ pageContext.setAttribute("products", products);
 							<p class="product-price">
 								<fmt:setLocale value="it_IT" />
 								<fmt:formatNumber value="${product.prezzo}" type="currency"
-									currencySymbol="&#8364" />
+									currencySymbol="&#8364;" />
 							</p>
-							<a href="ProductDetailServlet?id=${product.id}"
+							<a href="<%=request.getContextPath()%>/ProductDetailServlet?id=${product.id}"
 								class="btn-details">Vedi Dettagli</a>
 						</div>
 					</div>
@@ -66,32 +60,24 @@ pageContext.setAttribute("products", products);
 
 <div class="page-container">
 	<h2 class="section-title">Esplora le Categorie</h2>
-
 	<div class="category-container">
-
 		<div class="category-item">
-			<a href="SearchServlet?category=vaso" class="category-circle">
-				<img src="./images/1.png"
-				alt="Categoria Vasi">
+			<a href="<%=request.getContextPath()%>/SearchServlet?category=vaso" class="category-circle">
+				<img src="<%=request.getContextPath()%>/images/1.png" alt="Categoria Vasi">
 			</a>
 			<div class="category-label">Vasi</div>
 		</div>
-
 		<div id="translated-item" class="category-item">
-			<a href="SearchServlet?category=bonsai" class="category-circle">
-				<img src="./images/1.png"
-				alt="Categoria Bonsai">
+			<a href="<%=request.getContextPath()%>/SearchServlet?category=bonsai" class="category-circle">
+				<img src="<%=request.getContextPath()%>/images/1.png" alt="Categoria Bonsai">
 			</a>
 			<div class="category-label">Bonsai</div>
 		</div>
-
 		<div class="category-item">
-			<a href="SearchServlet?category=cura" class="category-circle">
-				<img src="./images/1.png"
-				alt="Categoria Cura">
+			<a href="<%=request.getContextPath()%>/SearchServlet?category=cura" class="category-circle">
+				<img src="<%=request.getContextPath()%>/images/1.png" alt="Categoria Cura">
 			</a>
 			<div class="category-label">Cura</div>
 		</div>
-
 	</div>
 </div>

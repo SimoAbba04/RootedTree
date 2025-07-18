@@ -8,10 +8,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Risultati Ricerca - RootedTree</title>
-    <link rel="stylesheet" href="../styles/index.css">
-    <link rel="stylesheet" href="../styles/navbar.css">
-    <link rel="stylesheet" href="../styles/footer.css">
-    <link rel="stylesheet" href="../styles/result.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/result.css">
 </head>
 <body>
     <%@ include file="navbar.jsp" %>
