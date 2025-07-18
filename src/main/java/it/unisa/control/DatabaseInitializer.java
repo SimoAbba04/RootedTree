@@ -1,4 +1,4 @@
-/*package it.unisa.control;
+package it.unisa.control;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
@@ -55,4 +55,4 @@ public class DatabaseInitializer implements ServletContextListener {
 		// Nothing
 	}
 
-}*/
+}

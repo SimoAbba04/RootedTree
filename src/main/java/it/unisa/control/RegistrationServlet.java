@@ -36,7 +36,7 @@ public class RegistrationServlet extends HttpServlet {
         try {
             if (userDao.doRetrieveByMail(email) != null) {
                 request.setAttribute("errorMessage", "Un account con questa email esiste già. Prova ad accedere.");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("./common/register.jsp");
                 dispatcher.forward(request, response);
                 return;
             }
@@ -54,12 +54,12 @@ public class RegistrationServlet extends HttpServlet {
             userDao.doSave(newUser);
             
             request.setAttribute("successMessage", "Registrazione completata! Ora puoi accedere.");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./common/register.jsp");
             dispatcher.forward(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("error500.jsp");
+            response.sendRedirect(request.getContextPath() +"/common/error500.jsp");
         }
     }
 }

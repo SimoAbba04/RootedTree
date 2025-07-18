@@ -27,7 +27,7 @@ public class AccountServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if (session == null || session.getAttribute("user") == null) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect(request.getContextPath() +"/common/login.jsp");
             return;
         }
 
@@ -46,11 +46,11 @@ public class AccountServlet extends HttpServlet {
 
         } catch (SQLException e) {
             System.err.println("Errore recupero dati account: " + e.getMessage());
-            response.sendRedirect("error500.jsp");
+            response.sendRedirect(request.getContextPath() + "/common/error500.jsp");
             return;
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/account.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("common/account.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -58,7 +58,7 @@ public class AccountServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         
         if (session == null || session.getAttribute("user") == null) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect(request.getContextPath() +"/common/login.jsp");
             return;
         }
         
@@ -84,7 +84,7 @@ public class AccountServlet extends HttpServlet {
                             updatedUser.setPassword(HtmlHash.toHash(newPass));
                         } else {
                             session.setAttribute("errorMessage", "La vecchia password non è corretta.");
-                            response.sendRedirect("account");
+                            response.sendRedirect(request.getContextPath() +"/common/account.jsp");
                             return;
                         }
                     } else {
@@ -145,6 +145,6 @@ public class AccountServlet extends HttpServlet {
             session.setAttribute("errorMessage", "Si è verificato un errore inaspettato.");
         }
         
-        response.sendRedirect("account.jsp");
+        response.sendRedirect(request.getContextPath() +"/common/account.jsp");
     }
 }

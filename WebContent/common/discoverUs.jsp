@@ -17,7 +17,6 @@
         <div class="about-container">
             <h1 class="page-title">Le Radici della Nostra Passione</h1>
 
-            <!-- Sezione 1: Immagine a Sinistra, Testo a Destra -->
             <section class="about-section">
                 <div class="about-image">
                     <img src="https://placehold.co/600x400/A3B18A/344E41?text=Mani+che+curano+un+bonsai" alt="Mani esperte che curano un bonsai">
@@ -33,7 +32,6 @@
                 </div>
             </section>
 
-            <!-- Sezione 2: Testo a Sinistra, Immagine a Destra -->
             <section class="about-section reverse">
                 <div class="about-image">
                     <img src="https://placehold.co/600x400/588157/FFFFFF?text=Serra+con+molti+bonsai" alt="Serra luminosa con una vasta selezione di bonsai">

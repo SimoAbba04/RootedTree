@@ -51,11 +51,11 @@ public class SearchServlet extends HttpServlet {
 	        } catch (SQLException e) {
 	            System.err.println("Errore durante la ricerca del prodotto: " + e.getMessage());
 	            request.setAttribute("error", "Errore del database durante la ricerca.");
-	            response.sendRedirect("error500.jsp");
+	            response.sendRedirect(request.getContextPath() +"error500.jsp");
 	            return; 
 	        }
 
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("/searchResult.jsp");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("./common/searchResult.jsp");
 	        dispatcher.forward(request, response);
 	    }
 	}
