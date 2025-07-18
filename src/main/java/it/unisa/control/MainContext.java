@@ -67,6 +67,6 @@ public class MainContext implements ServletContextListener {
     
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        // Logica di pulizia se necessaria
+        // nothing
     }
 }

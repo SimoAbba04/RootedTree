@@ -8,7 +8,7 @@
         </div>
         <nav class="nav-links">
             <a href="SearchServlet?searchQuery=">Prodotti</a>
-            <a href="discoverUs.jsp">Chi siamo</a>
+            <a href="common/discoverUs.jsp">Chi siamo</a>
         </nav>
         <div class="search-bar">
        		<form action="SearchServlet" method="GET">
@@ -18,10 +18,10 @@
         </div>
         
         <div class="icons">
-            <a href="login.jsp">
+            <a href="common/login.jsp">
                 <img src="<%=request.getContextPath()%>/images/login.svg" alt="Login">
             </a>
-            <a href="cart.jsp">
+            <a href="common/cart.jsp">
                 <img src="<%=request.getContextPath()%>/images/cart.svg" alt="Cart">
             </a>
         </div>

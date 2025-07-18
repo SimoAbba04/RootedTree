@@ -18,7 +18,6 @@ public class FileUploadServlet extends HttpServlet {
 	static String SAVE_DIR = "";
 
 	public void init() {
-		// Get the file location where it would be stored
 		SAVE_DIR = getServletConfig().getInitParameter("file-upload");
 	}
 
@@ -47,8 +46,7 @@ public class FileUploadServlet extends HttpServlet {
 			}
 		}
 		request.setAttribute("message", message);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/common/index.jsp");
 		dispatcher.forward(request, response);
 	}
 }
-

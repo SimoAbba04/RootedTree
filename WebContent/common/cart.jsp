@@ -9,10 +9,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Il Tuo Carrello - RootedTree</title>
-<link rel="stylesheet" href="./styles/index.css">
-<link rel="stylesheet" href="./styles/navbar.css">
-<link rel="stylesheet" href="./styles/footer.css">
-<link rel="stylesheet" href="./styles/cart.css">
+<link rel="stylesheet" href="../styles/index.css">
+<link rel="stylesheet" href="../styles/navbar.css">
+<link rel="stylesheet" href="../styles/footer.css">
+<link rel="stylesheet" href="../styles/cart.css">
 <%-- Nuovo CSS per il carrello --%>
 </head>
 <body>

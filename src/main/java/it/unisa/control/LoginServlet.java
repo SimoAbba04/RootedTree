@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 
 			if (user == null) {
 				request.setAttribute("errorMessage", "Email o password non corretti. Riprova.");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("./common/login.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/common/login.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
@@ -49,16 +49,16 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("isAdmin", false);
 				}
 
-				response.sendRedirect(request.getContextPath() +"/common/index.jsp");
+				response.sendRedirect(request.getContextPath() + "/common/index.jsp");
 			} else {
 				request.setAttribute("errorMessage", "Email o password non corretti. Riprova.");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("./common/login.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/common/login.jsp");
 				dispatcher.forward(request, response);
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			response.sendRedirect(request.getContextPath() +"/common/error500.jsp");
+			response.sendRedirect(request.getContextPath() + "/common/error500.jsp");
 		}
 	}
 }

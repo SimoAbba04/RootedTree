@@ -19,7 +19,6 @@ public class ProductImageServlet extends HttpServlet {
         try {
             id = Integer.parseInt(request.getParameter("id"));
         } catch (NumberFormatException e) {
-            // Se l'ID non è un numero, non è una richiesta valida
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID prodotto non valido.");
             return;
         }
@@ -34,7 +33,6 @@ public class ProductImageServlet extends HttpServlet {
                 response.setContentType("image/png");
                 response.setContentLength(imageData.length);
                 
-                // Scrive i dati binari dell'immagine direttamente nello stream di output della risposta
                 response.getOutputStream().write(imageData);
             } else {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Immagine non trovata.");

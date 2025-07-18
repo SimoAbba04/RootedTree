@@ -7,11 +7,11 @@
 <title>RootedTree - Bonsai Shop</title>
 <link rel="icon" type="image/x-icon"
 	href="/images/rootedTreeFavicon.svg">
-<link rel="stylesheet" href="./styles/index.css">
-<link rel="stylesheet" href="./styles/navbar.css">
-<link rel="stylesheet" href="./styles/home.css">
-<link rel="stylesheet" href="./styles/footer.css">
-<link rel="stylesheet" href="./styles/result.css">
+<link rel="stylesheet" href="../styles/index.css">
+<link rel="stylesheet" href="../styles/navbar.css">
+<link rel="stylesheet" href="../styles/home.css">
+<link rel="stylesheet" href="../styles/footer.css">
+<link rel="stylesheet" href="../styles/result.css">
 </head>
 <body>
 	<%@ include file="navbar.jsp"%>
