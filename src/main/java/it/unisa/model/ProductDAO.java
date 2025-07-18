@@ -340,6 +340,23 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 	    
 	    return prodotti;
 	}
-
+	
+	public synchronized void updateStock(int productId, int quantitySold) throws SQLException {
+	    Connection c = null;
+	    PreparedStatement ps = null;
+	    
+	    String sql = "UPDATE " + TABLE_NAME + " SET Stock = Stock - ? WHERE IdProdotto = ?";
+	    
+	    try {
+	        c = ds.getConnection();
+	        ps = c.prepareStatement(sql);
+	        ps.setInt(1, quantitySold);
+	        ps.setInt(2, productId);
+	        ps.executeUpdate();
+	    } finally {
+	        if (ps != null) ps.close();
+	        if (c != null) c.close();
+	    }
+	}
 
 }

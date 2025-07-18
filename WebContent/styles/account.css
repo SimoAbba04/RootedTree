@@ -104,7 +104,7 @@
     margin-bottom: 1rem;
 }
 
-/* --- 5. Responsività --- */
+
 @media (max-width: 600px) {
     .account-container {
         padding: 0 1rem;
@@ -120,3 +120,35 @@
         gap: 0;
     }
 }
+
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.order-item {
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    flex-wrap: wrap; /* Per la responsività */
+    gap: 10px; 
+}
+
+.order-status {
+    background-color: #e0e0e0;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: 600;
+    white-space: nowrap; /* Evita che il testo vada a capo */
+}
+

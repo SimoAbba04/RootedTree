@@ -10,18 +10,15 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.Collection;
 import javax.sql.DataSource;
 
-import it.unisa.model.AddressDAO;
-import it.unisa.model.AddressDTO;
-import it.unisa.model.PayMethodDAO;
-import it.unisa.model.PayMethodDTO;
-import it.unisa.model.UserDAO;
-import it.unisa.model.UserDTO;
+import it.unisa.model.*;
 
 @WebServlet("/account")
 public class AccountServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
@@ -31,24 +28,30 @@ public class AccountServlet extends HttpServlet {
             return;
         }
 
-        // Logica "Flash Message": sposta i messaggi dalla sessione alla richiesta
         if (session.getAttribute("successMessage") != null) {
             request.setAttribute("successMessage", session.getAttribute("successMessage"));
             session.removeAttribute("successMessage");
         }
-        
+        if (session.getAttribute("errorMessage") != null) {
+            request.setAttribute("errorMessage", session.getAttribute("errorMessage"));
+            session.removeAttribute("errorMessage");
+        }
+
         UserDTO user = (UserDTO) session.getAttribute("user");
         DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
         
         AddressDAO addressDao = new AddressDAO(ds);
         PayMethodDAO paymentDao = new PayMethodDAO(ds);
+        OrderDAO orderDao = new OrderDAO(ds);
 
         try {
             AddressDTO address = addressDao.doRetrieveByAccount(user.getID());
             PayMethodDTO payment = paymentDao.doRetrieveByAccount(user.getID());
+            Collection<OrderDTO> orders = orderDao.doRetrieveByAccount(user.getID());
 
             request.setAttribute("address", address);
             request.setAttribute("payment", payment);
+            request.setAttribute("orders", orders);
 
         } catch (SQLException e) {
             System.err.println("Errore recupero dati account: " + e.getMessage());
@@ -90,7 +93,7 @@ public class AccountServlet extends HttpServlet {
                             updatedUser.setPassword(HtmlHash.toHash(newPass));
                         } else {
                             request.setAttribute("errorMessage", "La vecchia password non è corretta.");
-                            doGet(request, response); // Fa un FORWARD mostrando l'errore
+                            doGet(request, response);
                             return;
                         }
                     } else {
@@ -99,7 +102,7 @@ public class AccountServlet extends HttpServlet {
                     
                     userDao.doUpdate(updatedUser);
                     session.setAttribute("user", updatedUser);
-                    request.setAttribute("successMessage", "Dati del profilo aggiornati con successo!");
+                    session.setAttribute("successMessage", "Dati del profilo aggiornati con successo!");
                     break;
 
                 case "updateAddress":
@@ -122,7 +125,7 @@ public class AccountServlet extends HttpServlet {
                         addressDao.doSave(address);
                     }
                     session.setAttribute("address", address);
-                    request.setAttribute("successMessage", "Indirizzo salvato con successo!");
+                    session.setAttribute("successMessage", "Indirizzo salvato con successo!");
                     break;
 
                 case "updatePayment":
@@ -142,16 +145,16 @@ public class AccountServlet extends HttpServlet {
                         paymentDao.doSave(payment);
                     }
                     session.setAttribute("payment", payment);
-                    request.setAttribute("successMessage", "Metodo di pagamento salvato con successo!");
+                    session.setAttribute("successMessage", "Metodo di pagamento salvato con successo!");
                     break;
             }
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Si è verificato un errore con il database.");
-            doGet(request, response); // Fa un FORWARD mostrando l'errore
+            doGet(request, response);
             return;
         }
         
-        response.sendRedirect("account"); // Fa un REDIRECT in caso di successo
+        response.sendRedirect("account");
     }
 }

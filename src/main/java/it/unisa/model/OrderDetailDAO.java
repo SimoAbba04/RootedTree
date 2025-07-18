@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 import javax.sql.DataSource;
 
-
 public class OrderDetailDAO {
 
     private DataSource ds;
@@ -15,11 +14,10 @@ public class OrderDetailDAO {
         this.ds = ds;
     }
 
-    public synchronized int doSave(OrderDetailDTO dettaglio) throws SQLException {
+    public synchronized void doSave(OrderDetailDTO dettaglio) throws SQLException {
         Connection c = null;
         PreparedStatement ps = null;
         String sql = "INSERT INTO " + TABLE_NAME + " (IdOrdine, IdProdotto, Quantita, PrezzoUnitario) VALUES (?, ?, ?, ?)";
-        int generatedId = -1;
         try {
             c = ds.getConnection();
             ps = c.prepareStatement(sql);
@@ -28,20 +26,10 @@ public class OrderDetailDAO {
             ps.setInt(3, dettaglio.getQta());
             ps.setDouble(4, dettaglio.getPrezzoUnitario());
             ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-			if (rs.next()) {
-				generatedId = rs.getInt(1);
-			}
         } finally {
-        	try {
-				if (ps != null)
-					ps.close();
-			} finally {
-				if (c != null)
-					c.close();
-			}
+            if (ps != null) ps.close();
+            if (c != null) c.close();
         }
-        return generatedId;
     }
 
     public synchronized Collection<OrderDetailDTO> doRetrieveByOrdine(int ordineId) throws SQLException {
@@ -55,7 +43,7 @@ public class OrderDetailDAO {
             ps.setInt(1, ordineId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-            	OrderDetailDTO dettaglio = new OrderDetailDTO();
+                OrderDetailDTO dettaglio = new OrderDetailDTO();
                 dettaglio.setId(rs.getInt("IdDettaglio"));
                 dettaglio.setIdOrdine(rs.getInt("IdOrdine"));
                 dettaglio.setIdProdotto(rs.getInt("IdProdotto"));
@@ -64,13 +52,8 @@ public class OrderDetailDAO {
                 dettagli.add(dettaglio);
             }
         } finally {
-        	try {
-				if (ps != null)
-					ps.close();
-			} finally {
-				if (c != null)
-					c.close();
-			}
+            if (ps != null) ps.close();
+            if (c != null) c.close();
         }
         return dettagli;
     }
