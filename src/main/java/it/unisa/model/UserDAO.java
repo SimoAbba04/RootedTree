@@ -197,7 +197,7 @@ public class UserDAO implements IBeanDao<UserDTO> {
 	        PreparedStatement ps = null;
 
 	        String updateSql = "UPDATE " + TABLE_NAME 
-	                         + " SET Nome = ?, Cognome = ?, Email = ?, Pw = ?, DataNascita = ? WHERE IdIndirizzo = ?";
+	                         + " SET Nome = ?, Cognome = ?, Email = ?, Pw = ?, DataNascita = ? WHERE IdAccount = ?";
 
 	        try {
 	            c = ds.getConnection();
