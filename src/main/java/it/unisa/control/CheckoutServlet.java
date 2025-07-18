@@ -19,7 +19,7 @@ public class CheckoutServlet extends HttpServlet {
      */
     public CheckoutServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stu
     }
 
 	/**
