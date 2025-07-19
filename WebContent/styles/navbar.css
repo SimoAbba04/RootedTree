@@ -114,3 +114,71 @@
     padding: 0 15px;
     border: 1px solid #ccc; 
 }
+
+.hamburger-icon {
+    display: none; /* Nascosto di default su desktop */
+    font-size: 28px;
+    cursor: pointer;
+    color: #3d4c41;
+}
+
+.overlay {
+    height: 100%;
+    width: 0; /* Nascosto di default */
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background-color: rgba(240, 245, 240, 0.98); 
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 28px;
+    color: #3d4c41;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #4a6853;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+
+@media screen and (max-width: 850px) {
+    .nav-links, .icons {
+        display: none; /* Nascondi i link e le icone del desktop */
+    }
+    .hamburger-icon {
+        display: block; /* Mostra l'icona dell'hamburger */
+    }
+    .search-bar {
+        flex-grow: 1; /* Permette alla search bar di occupare più spazio */
+        margin: 0 1rem;
+    }
+
+    .search-bar input[type="text"] {
+        width: 100%;
+        opacity: 1;
+        padding: 0 15px;
+        border: 1px solid #ccc;
+    }
+}

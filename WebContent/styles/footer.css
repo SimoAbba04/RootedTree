@@ -84,5 +84,19 @@ footer{
 .social-icons img:hover {
 	opacity: 1;
 	transform: translateY(-3px);
-	/* Leggero effetto al passaggio del mouse */
+}
+
+@media screen and (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Impila le colonne verticalmente */
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+    .footer-column ul {
+        padding: 0;
+    }
+    .social-icons {
+        justify-content: center; 
+    }
 }
