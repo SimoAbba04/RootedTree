@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestione Prodotto</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/admin-style.css">
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/adminDashboard.css">
 </head>
 <body>
     <div class="admin-table-container">
@@ -17,8 +17,7 @@
             </c:choose>
         </h1>
         
-        <form action="<%=request.getContextPath()%>/admin/save-product" method="post" enctype="multipart/form-data">
-
+        <form action="<%=request.getContextPath()%>/admin/productControlServlet" method="post" enctype="multipart/form-data">
             <c:if test="${not empty product}">
                 <input type="hidden" name="id" value="${product.id}">
             </c:if>
@@ -33,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label for="prezzo">Prezzo (€)</label>
-                <input type="number" id="prezzo" name="prezzo" value="${product.prezzo}" step="0.01" required>
+                <input type="number" id="prezzo" name="prezzo" value="${product.prezzo}" required>
             </div>
             <div class="form-group">
                 <label for="stock">Stock (Quantità)</label>
@@ -42,7 +41,6 @@
             <div class="form-group">
                 <label for="categoria">Categoria</label>
                 <select id="categoria" name="categoria" required>
-                	            <!-- Per gestire tipologia -->
                     <option value="bonsai" ${product.categoria == 'bonsai' ? 'selected' : ''}>Bonsai</option>
                     <option value="vaso" ${product.categoria == 'vaso' ? 'selected' : ''}>Vaso</option>
                     <option value="cura" ${product.categoria == 'cura' ? 'selected' : ''}>Cura</option>
@@ -50,14 +48,14 @@
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine Prodotto</label>
-                <input type="file" id="immagine" name="immagine" accept="image/png" required>
+                <input type="file" id="immagine" name="immagine" accept="image/png, image/jpeg">
                 <c:if test="${not empty product}">
                     <p class="form-hint">Lasciare vuoto per non modificare l'immagine corrente.</p>
                 </c:if>
             </div>
 
             <div class="admin-actions">
-                <button type="submit" class="admin-button">Salva Prodotto</button>
+                <input type="submit" class="admin-button">Salva Prodotto</input>
                 <a href="<%=request.getContextPath()%>/SearchServlet?source=admin" class="admin-button">Annulla</a>
             </div>
         </form>

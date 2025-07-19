@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 import it.unisa.model.ProductDAO;
 import it.unisa.model.ProductDTO;
 
-@WebServlet("/admin/product-control")
+@WebServlet("/admin/productControlServlet")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, maxFileSize = 1024 * 1024 * 10, maxRequestSize = 1024 * 1024 * 50)
 public class AdminProductControlServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -28,19 +28,16 @@ public class AdminProductControlServlet extends HttpServlet {
         try {
             if (action != null) {
                 if (action.equals("edit")) {
-                    // Mostra il form per la modifica
                     int id = Integer.parseInt(request.getParameter("id"));
                     request.setAttribute("product", productDao.doRetrieveByKey(id));
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/productForm.jsp");
                     dispatcher.forward(request, response);
                     return;
                 } else if (action.equals("add")) {
-                    // Mostra il form per l'aggiunta (vuoto)
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/productForm.jsp");
                     dispatcher.forward(request, response);
                     return;
                 } else if (action.equals("delete")) {
-                    // Esegue la cancellazione
                     int id = Integer.parseInt(request.getParameter("id"));
                     productDao.doDelete(id);
                 }
@@ -49,7 +46,6 @@ public class AdminProductControlServlet extends HttpServlet {
             e.printStackTrace();
         }
         
-        // Dopo una cancellazione o se non c'è azione, torna alla lista prodotti
         response.sendRedirect(request.getContextPath() + "/SearchServlet?source=admin");
     }
 
@@ -79,11 +75,9 @@ public class AdminProductControlServlet extends HttpServlet {
             product.setCategoria(ProductDTO.Categoria.fromString(categoria));
 
             if (idStr != null && !idStr.isEmpty()) {
-                // Modalità Modifica
                 product.setId(Integer.parseInt(idStr));
                 productDao.doUpdate(product, imageStream);
             } else {
-                // Modalità Aggiungi
                 productDao.doSave(product, imageStream);
             }
 

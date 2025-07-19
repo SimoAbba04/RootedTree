@@ -17,19 +17,17 @@
         <div class="admin-search-bar">
             <form action="<%=request.getContextPath()%>/SearchServlet" method="GET">
                 <input type="hidden" name="source" value="admin">
-                
                 <input type="text" name="searchQuery" placeholder="Cerca prodotto per nome...">
                 <button type="submit" class="admin-button">Cerca</button>
             </form>
         </div>
         
         <div class="admin-actions">
-            <a href="#" class="admin-button">Aggiungi Nuovo Prodotto</a>
-            <a href="<%=request.getContextPath()%>/admin/dashboard" class="admin-button">Torna alla Dashboard</a>
+            <a href="<%=request.getContextPath()%>/admin/productControlServlet?action=add" class="admin-button">Aggiungi Nuovo Prodotto</a>
+            <a href="<%=request.getContextPath()%>/admin/adminDashboard.jsp" class="admin-button">Torna alla Dashboard</a>
         </div>
 
         <table class="product-table">
-            <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nome Prodotto</th>
@@ -37,21 +35,18 @@
                     <th>Stock</th>
                     <th>Azioni</th>
                 </tr>
-            </thead>
-            <tbody>
                 <c:forEach var="product" items="${products}">
                     <tr>
                         <td>${product.id}</td>
-                        <td><c_out value="${product.nome}" /></td>
+                        <td><c:out value="${product.nome}" /></td>
                         <td>€ ${product.prezzo}</td>
                         <td>${product.disponibilità}</td>
                         <td class="action-links">
-                            <a href="#">Modifica</a> | 
-                            <a href="#">Cancella</a>
+                            <a href="<%=request.getContextPath()%>/admin/productControlServlet?action=edit&id=${product.id}">Modifica</a> | 
+                            <a href="<%=request.getContextPath()%>/admin/productControlServlet?action=delete&id=${product.id}" onclick="return confirm('Sei sicuro di voler eliminare questo prodotto?')">Cancella</a>
                         </td>
                     </tr>
                 </c:forEach>
-            </tbody>
         </table>
     </div>
 </body>

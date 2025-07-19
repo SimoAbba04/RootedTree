@@ -22,7 +22,7 @@
                 La pagina che stai cercando non esiste o è stata spostata.
                 Forse un piccolo bonsai si è perso lungo la via.
             </p>
-            <a href="index.jsp" class="btn-primary">Torna alla Home</a>
+            <a href="common/index.jsp" class="btn-primary">Torna alla Home</a>
         </div>
     </main>
 

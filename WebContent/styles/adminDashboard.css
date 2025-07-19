@@ -1,12 +1,9 @@
-
+/* Stile minimale per l'area Admin */
 body {
-    background-color: #f5f5dc; 
+    background-color: #f5f5dc;
     font-family: Arial, sans-serif;
     color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 20px;
     margin: 0;
 }
 
@@ -16,6 +13,8 @@ body {
     padding: 40px;
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 40px auto; /* Si centra da solo */
 }
 
 h1 {
@@ -31,7 +30,9 @@ p {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-bottom: 30px;
 }
+
 .admin-button {
     display: block;
     padding: 15px 20px;
@@ -58,11 +59,10 @@ p {
     background-color: #ebccd1;
 }
 
-
 .admin-table-container {
     width: 100%;
     max-width: 1000px;
-    margin: 20px auto;
+    margin: 20px auto; /* Si centra da solo */
     background-color: #fff;
     padding: 20px;
     border: 1px solid #ccc;
@@ -95,8 +95,7 @@ p {
     margin-top: 20px;
 }
 
-.product-table th,
-.product-table td {
+.product-table th, .product-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
@@ -104,10 +103,6 @@ p {
 
 .product-table th {
     background-color: #f2f2f2;
-}
-
-.product-table tr:nth-child(even) {
-    background-color: #f9f9f9;
 }
 
 .action-links a {

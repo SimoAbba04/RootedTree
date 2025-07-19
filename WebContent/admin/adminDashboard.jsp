@@ -15,8 +15,8 @@
         <p>Seleziona un'operazione dal pannello di controllo.</p>
         
         <div class="admin-actions">
-            <a href="<%=request.getContextPath()%>/admin/product-management" class="admin-button">Gestisci Catalogo Prodotti</a>
-            <a href="<%=request.getContextPath()%>/admin/order-view" class="admin-button">Visualizza Ordini Clienti</a>
+            <a href="<%=request.getContextPath()%>/SearchServlet?source=admin" class="admin-button">Gestisci Catalogo Prodotti</a>
+            <a href="<%=request.getContextPath()%>/admin/order-managment" class="admin-button">Visualizza Ordini Clienti</a>
             <a href="<%=request.getContextPath()%>/LogoutServlet" class="admin-button logout">Logout</a>
         </div>
     </div>
