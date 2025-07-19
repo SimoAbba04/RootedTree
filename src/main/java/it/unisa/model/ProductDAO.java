@@ -358,5 +358,33 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 	        if (c != null) c.close();
 	    }
 	}
+	
+	public synchronized String getProductNameById(int productId) throws SQLException {
+	    Connection c = null;
+	    PreparedStatement ps = null;
+	    String productName = null;
+
+	    String sql = "SELECT Nome FROM " + TABLE_NAME + " WHERE IdProdotto = ?";
+	    
+	    try {
+	        c = ds.getConnection();
+	        ps = c.prepareStatement(sql);
+	        ps.setInt(1, productId);
+	        
+	        ResultSet rs = ps.executeQuery();
+	        
+	        if (rs.next()) {
+	            productName = rs.getString("Nome");
+	        }
+
+	    } finally {
+	        try {
+	            if (ps != null) ps.close();
+	        } finally {
+	            if (c != null) c.close();
+	        }
+	    }
+	    return productName;
+	}
 
 }

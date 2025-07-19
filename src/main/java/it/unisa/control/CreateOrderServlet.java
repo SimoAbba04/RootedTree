@@ -47,7 +47,7 @@ public class CreateOrderServlet extends HttpServlet {
             ordine.setTotale(cart.getTotal());
 
             OrderDAO ordineDao = new OrderDAO(ds);
-            int idOrdine = ordineDao.doSave(ordine);
+            int idOrdine = ordineDao.doSaveOrder(ordine);
 
             // Salva i dettagli dell'ordine (i singoli prodotti)
             OrderDetailDAO dettaglioDao = new OrderDetailDAO(ds);

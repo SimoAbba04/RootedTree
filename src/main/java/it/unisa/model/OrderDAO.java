@@ -13,7 +13,7 @@ public class OrderDAO implements IBeanDao<OrderDTO> {
     public OrderDAO(DataSource ds) {
         this.ds = ds;
     }
-
+    
     public synchronized int doSaveOrder(OrderDTO ordine) throws SQLException {
         Connection c = null;
         PreparedStatement ps = null;
@@ -22,6 +22,7 @@ public class OrderDAO implements IBeanDao<OrderDTO> {
 
         try {
             c = ds.getConnection();
+            // La "magia" è qui: Statement.RETURN_GENERATED_KEYS
             ps = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, ordine.getIdAccount());
             ps.setTimestamp(2, new Timestamp(ordine.getDataOrdine().getTime()));
@@ -39,7 +40,6 @@ public class OrderDAO implements IBeanDao<OrderDTO> {
         }
         return generatedId;
     }
-
     @Override
     public int doSave(OrderDTO bean) throws SQLException {
         return 0;

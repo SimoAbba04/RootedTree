@@ -1,6 +1,7 @@
 package it.unisa.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date; 
 
 public class OrderDTO implements Serializable {
@@ -30,8 +31,8 @@ public class OrderDTO implements Serializable {
     private Date dataOrdine;
     private Stato stato;
     private double totale;
+    private Collection<OrderDetailDTO> details;
 
-    // Getters e Setters
     public int getId() {
         return id;
     }
@@ -61,5 +62,12 @@ public class OrderDTO implements Serializable {
     }
     public void setTotale(double totale) {
         this.totale = totale;
+    }
+    
+    public Collection<OrderDetailDTO> getDetails() {
+        return details;
+    }
+    public void setDetails(Collection<OrderDetailDTO> details) {
+        this.details = details;
     }
 }
