@@ -269,23 +269,23 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 		return prodotti;
 
 	}
-	
-	public synchronized Collection<ProductDTO> doRetrieveByCategory(String category) throws SQLException {
-	    Connection c = null;
-	    PreparedStatement ps = null;
-	    Collection<ProductDTO> prodotti = new LinkedList<>();
 
-	    String sql = "SELECT * FROM " + TABLE_NAME + " WHERE Categoria = ?";
-	    
-	    try {
-	        c = ds.getConnection();
-	        ps = c.prepareStatement(sql);
-	        ps.setString(1, category);
-	        
-	        ResultSet rs = ps.executeQuery();
-	        
-	        while (rs.next()) {
-	        	ProductDTO prodotto = new ProductDTO();
+	public synchronized Collection<ProductDTO> doRetrieveByCategory(String category) throws SQLException {
+		Connection c = null;
+		PreparedStatement ps = null;
+		Collection<ProductDTO> prodotti = new LinkedList<>();
+
+		String sql = "SELECT * FROM " + TABLE_NAME + " WHERE Categoria = ?";
+
+		try {
+			c = ds.getConnection();
+			ps = c.prepareStatement(sql);
+			ps.setString(1, category);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				ProductDTO prodotto = new ProductDTO();
 				prodotto.setId(rs.getInt("IdProdotto"));
 				prodotto.setNome(rs.getString("Nome"));
 				prodotto.setDescrizione(rs.getString("Descrizione"));
@@ -293,98 +293,132 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 				prodotto.setDisponibilità(rs.getInt("Stock"));
 				prodotto.setCategoria(Categoria.fromString(rs.getString("Categoria")));
 				prodotti.add(prodotto);
-	        }
+			}
 
-	    } finally {
-	        try {
-	            if (ps != null) ps.close();
-	        } finally {
-	            if (c != null) c.close();
-	        }
-	    }
-	    return prodotti;
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				if (c != null)
+					c.close();
+			}
+		}
+		return prodotti;
 	}
-	
+
 	public synchronized Collection<ProductDTO> doRetrieveLastFourItem() throws SQLException {
-	    Connection c = null;
-	    PreparedStatement ps = null;
-	    Collection<ProductDTO> prodotti = new LinkedList<>();
-	    
+		Connection c = null;
+		PreparedStatement ps = null;
+		Collection<ProductDTO> prodotti = new LinkedList<>();
 
-	    String sql = "SELECT * FROM " + TABLE_NAME + " ORDER BY IdProdotto DESC LIMIT 4";
-	    
-	    try {
-	        c = ds.getConnection();
-	        ps = c.prepareStatement(sql);
-	        
-	        ResultSet rs = ps.executeQuery();
-	        
-	        while (rs.next()) {
-	            ProductDTO prodotto = new ProductDTO();
-	            prodotto.setId(rs.getInt("IdProdotto"));
-	            prodotto.setNome(rs.getString("Nome"));
-	            prodotto.setDescrizione(rs.getString("Descrizione"));
-	            prodotto.setPrezzo(rs.getDouble("Prezzo"));
-	            prodotto.setDisponibilità(rs.getInt("Stock"));
-	            prodotto.setCategoria(Categoria.fromString(rs.getString("Categoria")));
-	            prodotti.add(prodotto);
-	        }
+		String sql = "SELECT * FROM " + TABLE_NAME + " ORDER BY IdProdotto DESC LIMIT 4";
 
-	    } finally {
-	        try {
-	            if (ps != null) ps.close();
-	        } finally {
-	            if (c != null) c.close();
-	        }
-	    }
-	    
-	    return prodotti;
+		try {
+			c = ds.getConnection();
+			ps = c.prepareStatement(sql);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				ProductDTO prodotto = new ProductDTO();
+				prodotto.setId(rs.getInt("IdProdotto"));
+				prodotto.setNome(rs.getString("Nome"));
+				prodotto.setDescrizione(rs.getString("Descrizione"));
+				prodotto.setPrezzo(rs.getDouble("Prezzo"));
+				prodotto.setDisponibilità(rs.getInt("Stock"));
+				prodotto.setCategoria(Categoria.fromString(rs.getString("Categoria")));
+				prodotti.add(prodotto);
+			}
+
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				if (c != null)
+					c.close();
+			}
+		}
+
+		return prodotti;
 	}
-	
+
 	public synchronized void updateStock(int productId, int quantitySold) throws SQLException {
-	    Connection c = null;
-	    PreparedStatement ps = null;
-	    
-	    String sql = "UPDATE " + TABLE_NAME + " SET Stock = Stock - ? WHERE IdProdotto = ?";
-	    
-	    try {
-	        c = ds.getConnection();
-	        ps = c.prepareStatement(sql);
-	        ps.setInt(1, quantitySold);
-	        ps.setInt(2, productId);
-	        ps.executeUpdate();
-	    } finally {
-	        if (ps != null) ps.close();
-	        if (c != null) c.close();
-	    }
+		Connection c = null;
+		PreparedStatement ps = null;
+
+		String sql = "UPDATE " + TABLE_NAME + " SET Stock = Stock - ? WHERE IdProdotto = ?";
+
+		try {
+			c = ds.getConnection();
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, quantitySold);
+			ps.setInt(2, productId);
+			ps.executeUpdate();
+		} finally {
+			if (ps != null)
+				ps.close();
+			if (c != null)
+				c.close();
+		}
 	}
-	
+
 	public synchronized String getProductNameById(int productId) throws SQLException {
-	    Connection c = null;
-	    PreparedStatement ps = null;
-	    String productName = null;
+		Connection c = null;
+		PreparedStatement ps = null;
+		String productName = null;
 
-	    String sql = "SELECT Nome FROM " + TABLE_NAME + " WHERE IdProdotto = ?";
-	    
-	    try {
-	        c = ds.getConnection();
-	        ps = c.prepareStatement(sql);
-	        ps.setInt(1, productId);
-	        
-	        ResultSet rs = ps.executeQuery();
-	        
-	        if (rs.next()) {
-	            productName = rs.getString("Nome");
-	        }
+		String sql = "SELECT Nome FROM " + TABLE_NAME + " WHERE IdProdotto = ?";
 
-	    } finally {
-	        try {
-	            if (ps != null) ps.close();
-	        } finally {
-	            if (c != null) c.close();
-	        }
-	    }
-	    return productName;
+		try {
+			c = ds.getConnection();
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, productId);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				productName = rs.getString("Nome");
+			}
+
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				if (c != null)
+					c.close();
+			}
+		}
+		return productName;
 	}
 
+	public synchronized Collection<ProductDTO> doRetrieveByPartialName(String partialName) throws SQLException {
+		Connection c = null;
+		PreparedStatement ps = null;
+		Collection<ProductDTO> products = new LinkedList<>();
+
+		String sql = "SELECT * FROM " + TABLE_NAME + " WHERE Nome LIKE ? LIMIT 3";
+
+		try {
+			c = ds.getConnection();
+			ps = c.prepareStatement(sql);
+			ps.setString(1, partialName + "%");
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				ProductDTO product = new ProductDTO();
+				product.setId(rs.getInt("IdProdotto"));
+				product.setNome(rs.getString("Nome"));
+				products.add(product);
+			}
+		} finally {
+			if (ps != null)
+				ps.close();
+			if (c != null)
+				c.close();
+		}
+		return products;
+	}
 }

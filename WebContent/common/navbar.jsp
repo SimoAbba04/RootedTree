@@ -32,11 +32,14 @@
             <a href="<%=request.getContextPath()%>/common/discoverUs.jsp">Chi siamo</a>
         </nav>
         
-        <div class="search-bar">
-       		<form action="<%=request.getContextPath()%>/SearchServlet" method="GET">
-        	    <input type="text" placeholder="Acero palmato" name="searchQuery">
-        	    <button type="submit"><img alt="cerca" src="<%=request.getContextPath()%>/images/search.svg"></button>
-        	</form>
+        <div class="search-bar-container">
+            <div class="search-bar">
+                <form action="<%=request.getContextPath()%>/SearchServlet" method="GET" autocomplete="off">
+                    <input type="text" placeholder="Acero palmato" name="searchQuery" id="search-input" onkeyup="showSuggestions(this.value)">
+                    <button type="submit"><img alt="cerca" src="<%=request.getContextPath()%>/images/search.svg"></button>
+                </form>
+            </div>
+            <div id="suggestions-box"></div>
         </div>
         
 
@@ -61,6 +64,7 @@
             </a>
         </div>
         <script src="<%=request.getContextPath()%>/scripts/animation.js"></script>
+        <script src="<%=request.getContextPath()%>/scripts/ajax.js"></script>
         <div class="hamburger-icon" onclick="openNav()">
             &#9776;
         </div>

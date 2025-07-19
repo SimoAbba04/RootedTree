@@ -35,7 +35,7 @@ public class AccessControlFilter extends HttpFilter implements Filter {
 
 		if (path.startsWith("/admin/")) {
 			if (isAdmin == null || !isAdmin) {
-				httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/common/login.jsp");
+				httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/common/error500.jsp");
 				return;
 			}
 		}

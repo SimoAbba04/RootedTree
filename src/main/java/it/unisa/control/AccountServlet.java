@@ -12,13 +12,11 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Collection;
 import javax.sql.DataSource;
-
 import it.unisa.model.*;
 
 @WebServlet("/account")
 public class AccountServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
@@ -28,29 +26,21 @@ public class AccountServlet extends HttpServlet {
             return;
         }
 
-        if (session.getAttribute("successMessage") != null) {
-            request.setAttribute("successMessage", session.getAttribute("successMessage"));
-            session.removeAttribute("successMessage");
-        }
-        if (session.getAttribute("errorMessage") != null) {
-            request.setAttribute("errorMessage", session.getAttribute("errorMessage"));
-            session.removeAttribute("errorMessage");
-        }
-
         UserDTO user = (UserDTO) session.getAttribute("user");
         DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
         
-        AddressDAO addressDao = new AddressDAO(ds);
-        PayMethodDAO paymentDao = new PayMethodDAO(ds);
         OrderDAO orderDao = new OrderDAO(ds);
+        OrderDetailDAO detailDao = new OrderDetailDAO(ds);
 
         try {
-            AddressDTO address = addressDao.doRetrieveByAccount(user.getID());
-            PayMethodDTO payment = paymentDao.doRetrieveByAccount(user.getID());
             Collection<OrderDTO> orders = orderDao.doRetrieveByAccount(user.getID());
 
-            request.setAttribute("address", address);
-            request.setAttribute("payment", payment);
+            if (orders != null) {
+                for (OrderDTO order : orders) {
+                    Collection<OrderDetailDTO> details = detailDao.doRetrieveByOrdine(order.getId());
+                    order.setDetails(details);
+                }
+            }
             request.setAttribute("orders", orders);
 
         } catch (SQLException e) {
@@ -93,7 +83,7 @@ public class AccountServlet extends HttpServlet {
                             updatedUser.setPassword(HtmlHash.toHash(newPass));
                         } else {
                             request.setAttribute("errorMessage", "La vecchia password non è corretta.");
-                            doGet(request, response);
+                            doGet(request, response); 
                             return;
                         }
                     } else {
@@ -101,8 +91,8 @@ public class AccountServlet extends HttpServlet {
                     }
                     
                     userDao.doUpdate(updatedUser);
-                    session.setAttribute("user", updatedUser);
-                    session.setAttribute("successMessage", "Dati del profilo aggiornati con successo!");
+                    session.setAttribute("user", updatedUser); 
+                    request.setAttribute("successMessage", "Dati del profilo aggiornati con successo!");
                     break;
 
                 case "updateAddress":
@@ -124,8 +114,8 @@ public class AccountServlet extends HttpServlet {
                     } else {
                         addressDao.doSave(address);
                     }
-                    session.setAttribute("address", address);
-                    session.setAttribute("successMessage", "Indirizzo salvato con successo!");
+                    session.setAttribute("address", address); 
+                    request.setAttribute("successMessage", "Indirizzo salvato con successo!");
                     break;
 
                 case "updatePayment":
@@ -144,17 +134,16 @@ public class AccountServlet extends HttpServlet {
                     } else {
                         paymentDao.doSave(payment);
                     }
-                    session.setAttribute("payment", payment);
-                    session.setAttribute("successMessage", "Metodo di pagamento salvato con successo!");
+                    session.setAttribute("payment", payment); 
+                    request.setAttribute("successMessage", "Metodo di pagamento salvato con successo!");
                     break;
             }
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Si è verificato un errore con il database.");
-            doGet(request, response);
-            return;
         }
         
-        response.sendRedirect("account");
+
+        doGet(request, response);
     }
 }

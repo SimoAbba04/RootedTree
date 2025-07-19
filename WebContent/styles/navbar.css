@@ -60,8 +60,6 @@
 	transform: scale(1.1);
 }
 
-/* --- Stili Search Bar Semplificati --- */
-
 .search-bar form {
     display: flex;
     align-items: center;
@@ -88,7 +86,7 @@
     border: none;
     cursor: pointer;
     padding: 2px;
-    margin-left: -40px; /* Sovrappone l'icona all'input */
+    margin-left: -40px;
 }
 
 .search-bar button img {
@@ -102,7 +100,32 @@
     opacity: 1;
 }
 
-/* --- Stili per il Menu Hamburger e Overlay --- */
+.search-bar-container {
+    position: relative; 
+}
+#suggestions-box {
+    display: none; /* Nascosto di default */
+    position: absolute;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    width: 100%; /* Occupa la stessa larghezza della search bar */
+    z-index: 999999;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+#suggestions-box a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9em;
+}
+#suggestions-box a:hover {
+    background-color: #f1f1f1;
+}
+
 
 .hamburger-icon {
     display: none;
@@ -160,11 +183,11 @@
     .hamburger-icon {
         display: block;
     }
-    .search-bar {
+    .search-bar-container {
         flex-grow: 1;
         margin: 0 1rem;
     }
     .search-bar input[type="text"] {
-        width: 100%; /* Occupa tutto lo spazio disponibile su mobile */
+        width: 100%;
     }
 }
