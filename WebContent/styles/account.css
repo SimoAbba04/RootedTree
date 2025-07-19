@@ -13,6 +13,29 @@
     margin-bottom: 2rem;
 }
 
+.admin-link-container {
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+}
+
+.btn-admin-dashboard {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #594a43; /* Colore marrone per distinguerlo */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-admin-dashboard:hover {
+    background-color: #3d4c41;
+}
+
 
 .account-section {
     background-color: #fff;

@@ -12,7 +12,7 @@ import java.util.Collection;
 import javax.sql.DataSource;
 import it.unisa.model.*;
 
-@WebServlet("/admin/OrderManagement")
+@WebServlet("/admin/OrderServlet")
 public class AdminOrderServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -58,7 +58,7 @@ public class AdminOrderServlet extends HttpServlet {
             return;
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/orderManagment.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/orderManagement.jsp");
         dispatcher.forward(request, response);
     }
 }

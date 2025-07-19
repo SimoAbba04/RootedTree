@@ -28,7 +28,12 @@
 			<c:if test="${not empty errorMessage}">
 				<div class="notification error">${errorMessage}</div>
 			</c:if>
-
+			<c:if test="${sessionScope.isAdmin == true}">
+				<div class="admin-link-container">
+					<a href="<%=request.getContextPath()%>/admin/dashboard"
+						class="btn-admin-dashboard">Vai al Pannello Admin</a>
+				</div>
+			</c:if>
 			<section class="account-section">
 				<h2>I Tuoi Dati</h2>
 				<form id="profileForm" action="account" method="post"

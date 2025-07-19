@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestione Ordini</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/admin-order-style.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/adminDashboard.css">
 </head>
 <body>
     <div class="admin-container">
@@ -14,12 +14,12 @@
         <p>Visualizza e filtra gli ordini effettuati sul sito.</p>
 
         <div class="filter-section">
-            <form action="<%=request.getContextPath()%>/admin/OrderManagement" method="GET" class="filter-form">
+            <form action="<%=request.getContextPath()%>/admin/OrderServlet" method="GET" class="filter-form">
                 <label for="userEmail">Filtra per Email Cliente:</label>
                 <input type="email" name="userEmail" id="userEmail" placeholder="cliente@email.com">
                 <button type="submit" class="admin-button">Cerca</button>
             </form>
-            <form action="<%=request.getContextPath()%>/admin/OrderManagement" method="GET" class="filter-form">
+            <form action="<%=request.getContextPath()%>/admin/OrderServlet" method="GET" class="filter-form">
                 <label for="startDate">Da:</label>
                 <input type="date" name="startDate" id="startDate">
                 <label for="endDate">A:</label>
@@ -29,8 +29,8 @@
         </div>
         
         <div class="admin-actions">
-            <a href="<%=request.getContextPath()%>/admin/OrderManagement" class="admin-button">Mostra Tutti gli Ordini</a>
-            <a href="<%=request.getContextPath()%>/admin/adminDashboard" class="admin-button">Torna alla Dashboard</a>
+            <a href="<%=request.getContextPath()%>/admin/OrderServlet" class="admin-button">Mostra Tutti gli Ordini</a>
+            <a href="<%=request.getContextPath()%>/admin/adminDashboard.jsp" class="admin-button">Torna alla Dashboard</a>
         </div>
 
         <div class="order-list">
