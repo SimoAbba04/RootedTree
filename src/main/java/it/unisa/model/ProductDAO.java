@@ -76,7 +76,7 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 			ps.setDouble(3, prodotto.getPrezzo());
 			ps.setInt(4, prodotto.getDisponibilità());
 			ps.setString(5, prodotto.getCategoria().name());
-			// Metodo elegante per variare il numero di parametri
+			// Metodo intelligente per variare il numero di parametri
 			int parameterIndex = 6;
 			if (immagine != null) {
 				ps.setBinaryStream(parameterIndex++, immagine);

@@ -18,7 +18,7 @@
         </h1>
         
         <form action="<%=request.getContextPath()%>/admin/save-product" method="post" enctype="multipart/form-data">
-            <!-- Per effettuare update -->
+
             <c:if test="${not empty product}">
                 <input type="hidden" name="id" value="${product.id}">
             </c:if>
@@ -42,6 +42,7 @@
             <div class="form-group">
                 <label for="categoria">Categoria</label>
                 <select id="categoria" name="categoria" required>
+                	            <!-- Per gestire tipologia -->
                     <option value="bonsai" ${product.categoria == 'bonsai' ? 'selected' : ''}>Bonsai</option>
                     <option value="vaso" ${product.categoria == 'vaso' ? 'selected' : ''}>Vaso</option>
                     <option value="cura" ${product.categoria == 'cura' ? 'selected' : ''}>Cura</option>
@@ -49,7 +50,7 @@
             </div>
             <div class="form-group">
                 <label for="immagine">Immagine Prodotto</label>
-                <input type="file" id="immagine" name="immagine" accept="image/png">
+                <input type="file" id="immagine" name="immagine" accept="image/png" required>
                 <c:if test="${not empty product}">
                     <p class="form-hint">Lasciare vuoto per non modificare l'immagine corrente.</p>
                 </c:if>
