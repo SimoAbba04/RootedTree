@@ -1,0 +1,109 @@
+body {
+	background-color: #f5f5dc;
+	font-family: Arial, sans-serif;
+	color: #333;
+	padding: 20px;
+	margin: 0;
+}
+
+.admin-container {
+	width: 100%;
+	max-width: 1200px;
+	margin: 20px auto;
+	background-color: #fff;
+	padding: 20px;
+	border: 1px solid #ccc;
+}
+
+h1 {
+	margin-bottom: 10px;
+}
+
+p {
+	margin-bottom: 20px;
+	color: #666;
+}
+
+.admin-actions {
+	display: flex;
+	gap: 15px;
+	margin-bottom: 20px;
+}
+
+.admin-button {
+	padding: 10px 15px;
+	background-color: #e0e0e0;
+	border: 1px solid #999;
+	color: #333;
+	text-decoration: none;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.filter-section {
+	background-color: #f2f2f2;
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	align-items: center;
+}
+
+.filter-form {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.filter-form label {
+	font-weight: bold;
+}
+
+.filter-form input {
+	padding: 8px;
+	border: 1px solid #999;
+}
+
+.order-list {
+	margin-top: 20px;
+}
+
+.order-item {
+	border: 1px solid #ddd;
+	margin-bottom: 15px;
+}
+
+.order-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	background-color: #f2f2f2;
+	border-bottom: 1px solid #ddd;
+}
+
+.order-status {
+	background-color: #e0e0e0;
+	padding: 5px 10px;
+	border-radius: 15px;
+	font-size: 0.9em;
+}
+
+.order-details {
+	padding: 10px;
+}
+
+.detail-line {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 0;
+	border-bottom: 1px solid #eee;
+}
+
+.no-results {
+	padding: 20px;
+	text-align: center;
+	color: #888;
+}

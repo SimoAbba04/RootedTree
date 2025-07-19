@@ -21,7 +21,7 @@
             <p class="error-message">
                 Stiamo riscontrando un problema tecnico. Il nostro team è già al lavoro per potare i rami secchi e sistemare tutto.
             </p>
-            <a href="common/index.jsp" class="btn-primary">Torna alla Home</a>
+            <a href="<%=request.getContextPath()%>/common/index.jsp" class="btn-primary">Torna alla Home</a>
         </div>
     </main>
 

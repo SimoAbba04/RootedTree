@@ -17,7 +17,7 @@
             <h1 class="page-title">Le Radici della Nostra Passione</h1>
             <section class="about-section">
                 <div class="about-image">
-                    <img src="<%=request.getContextPath()%>/images/discover-1.jpg" alt="Mani esperte che curano un bonsai">
+                    <img src="<%=request.getContextPath()%>/images/curaBonsai.png" alt="Mani esperte che curano un bonsai">
                 </div>
                 <div class="about-text">
                     <h2>Un'Arte che Cresce con Pazienza</h2>
