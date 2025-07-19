@@ -207,6 +207,7 @@
 									<div class="order-details">
 										<c:forEach var="detail" items="${order.details}">
 											<div class="detail-line">
+
 												<span>${detail.qta} x <c:out
 														value="${detail.nomeProdotto}" /></span> <span>€
 													${detail.prezzoUnitario * detail.qta}</span>
