@@ -18,5 +18,6 @@
 		<%@ include file="/common/home.jsp"%>
 	</main>
 	<%@ include file="/common/footer.jsp"%>
+	
 </body>
 </html>

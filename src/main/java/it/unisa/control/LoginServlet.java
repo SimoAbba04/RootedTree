@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 
 				response.sendRedirect(request.getContextPath() + "/common/index.jsp");
 			} else {
-				request.setAttribute("errorMessage", "Email o password non corretti. Riprova.");
+				request.setAttribute("Errore", "Email o password non corretti. Riprova.");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/common/login.jsp");
 				dispatcher.forward(request, response);
 			}

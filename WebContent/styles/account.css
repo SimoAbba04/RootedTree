@@ -78,7 +78,7 @@
     background-color: #3d4c41;
 }
 
-/* --- 4. Stili per Dettagli Specifici --- */
+
 .form-group-inline {
     display: flex;
     gap: 1rem; /* Spazio tra i campi sulla stessa riga */
@@ -119,16 +119,17 @@
 }
 
 
-order-list {
+.order-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Aumenta un po' lo spazio tra gli ordini */
+    gap: 1.5rem;
 }
 
 .order-item {
     border: 1px solid #eee;
     border-radius: 8px;
-    background-color: #fdfdfa; /* Sfondo leggermente diverso per distinguere */
+    background-color: #fff;
+    overflow: hidden; /* Assicura che gli angoli arrotondati funzionino */
 }
 
 .order-header {
@@ -137,7 +138,7 @@ order-list {
     align-items: center;
     padding: 1rem;
     background-color: #f9f9f9;
-    border-bottom: 1px solid #eee; /* Aggiunge una linea di separazione */
+    border-bottom: 1px solid #eee;
     flex-wrap: wrap;
     gap: 10px;
 }
@@ -148,11 +149,11 @@ order-list {
     border-radius: 15px;
     font-size: 0.8em;
     font-weight: 600;
-    white-space: nowrap;
 }
 
-/* Rende i dettagli visibili di default */
+/* Regola chiave per assicurare che i dettagli siano visibili */
 .order-details {
+    display: block; /* Rende il blocco sempre visibile */
     padding: 1rem;
 }
 
@@ -160,8 +161,10 @@ order-list {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-
+.detail-line:last-child {
+    border-bottom: none;
+}
 

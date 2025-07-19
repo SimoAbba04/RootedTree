@@ -60,7 +60,7 @@
                 <img src="<%=request.getContextPath()%>/images/cart.svg" alt="Cart">
             </a>
         </div>
-        
+        <script src="<%=request.getContextPath()%>/scripts/animation.js"></script>
         <div class="hamburger-icon" onclick="openNav()">
             &#9776;
         </div>

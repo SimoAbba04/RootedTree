@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="it.unisa.model.ProductDAO, javax.sql.DataSource, it.unisa.model.OrderDetailDTO" %>
+<%@ page
+	import="it.unisa.model.ProductDAO, javax.sql.DataSource, it.unisa.model.OrderDetailDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -192,42 +193,46 @@
 				</form>
 			</section>
 
-			  <section class="account-section">
-                <h2>Cronologia Ordini</h2>
-                <c:choose>
-                    <c:when test="${not empty orders}">
-                        <div class="order-list">
-                            <% ProductDAO productDaoForNames = new ProductDAO((DataSource) getServletContext().getAttribute("DataSource")); %>
-                        
-                            <c:forEach var="order" items="${orders}">
-                                <div class="order-item">
-                                    <div class="order-header">
-                                        <span><strong>Ordine #${order.id}</strong></span>
-                                        <span>${order.dataOrdine}</span>
-                                        <span>€ ${order.totale}</span>
-                                        <span class="order-status">${order.stato}</span>
-                                    </div>
-                                    <div class="order-details">
-                                        <c:forEach var="detail" items="${order.details}">
-                                            <% 
-                                                OrderDetailDTO detailDTO = (OrderDetailDTO) pageContext.findAttribute("detail");
-                                                String productName = productDaoForNames.getProductNameById(detailDTO.getIdProdotto());
-                                            %>
-                                            <div class="detail-line">
-                                                <span>${detail.qta} x <%= productName %></span>
-                                                <span>€ ${detail.prezzoUnitario * detail.qta}</span>
-                                            </div>
-                                        </c:forEach>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </c:when>
-                    <c:otherwise>
-                        <p>Non hai ancora effettuato nessun ordine.</p>
-                    </c:otherwise>
-                </c:choose>
-            </section>
+			<section class="account-section">
+				<h2>Cronologia Ordini</h2>
+				<c:choose>
+					<c:when test="${not empty orders}">
+						<div class="order-list">
+							<%
+							ProductDAO productDaoForNames = new ProductDAO((DataSource) getServletContext().getAttribute("DataSource"));
+							%>
+
+							<c:forEach var="order" items="${orders}">
+								<div class="order-item">
+									<div class="order-header">
+										<span>Ordine #${order.id}</span> <span>${order.dataOrdine}</span>
+										<span>€ ${order.totale}</span> <span class="order-status">${order.stato}</span>
+									</div>
+
+									<div class="order-details">
+										<c:forEach var="detail" items="${order.details}">
+											<%
+											OrderDetailDTO detailDTO = (OrderDetailDTO) pageContext.findAttribute("detail");
+											String productName = "Prodotto non disponibile"; // Valore di default
+											if (detailDTO != null) {
+												productName = productDaoForNames.getProductNameById(detailDTO.getIdProdotto());
+											}
+											%>
+											<div class="detail-line">
+												<span>${detail.qta} x <%=productName%></span> <span>€
+													${detail.prezzoUnitario * detail.qta}</span>
+											</div>
+										</c:forEach>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<p>Non hai ancora effettuato nessun ordine.</p>
+					</c:otherwise>
+				</c:choose>
+			</section>
 
 		</div>
 	</main>
