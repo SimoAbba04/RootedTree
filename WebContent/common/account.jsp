@@ -198,28 +198,17 @@
 				<c:choose>
 					<c:when test="${not empty orders}">
 						<div class="order-list">
-							<%
-							ProductDAO productDaoForNames = new ProductDAO((DataSource) getServletContext().getAttribute("DataSource"));
-							%>
-
 							<c:forEach var="order" items="${orders}">
 								<div class="order-item">
 									<div class="order-header">
-										<span>Ordine #${order.id}</span> <span>${order.dataOrdine}</span>
+										<span><strong>Ordine #${order.id}</strong></span> <span>${order.dataOrdine}</span>
 										<span>€ ${order.totale}</span> <span class="order-status">${order.stato}</span>
 									</div>
-
 									<div class="order-details">
 										<c:forEach var="detail" items="${order.details}">
-											<%
-											OrderDetailDTO detailDTO = (OrderDetailDTO) pageContext.findAttribute("detail");
-											String productName = "Prodotto non disponibile"; // Valore di default
-											if (detailDTO != null) {
-												productName = productDaoForNames.getProductNameById(detailDTO.getIdProdotto());
-											}
-											%>
 											<div class="detail-line">
-												<span>${detail.qta} x <%=productName%></span> <span>€
+												<span>${detail.qta} x <c:out
+														value="${detail.nomeProdotto}" /></span> <span>€
 													${detail.prezzoUnitario * detail.qta}</span>
 											</div>
 										</c:forEach>

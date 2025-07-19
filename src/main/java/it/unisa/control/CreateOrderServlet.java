@@ -49,7 +49,6 @@ public class CreateOrderServlet extends HttpServlet {
             OrderDAO ordineDao = new OrderDAO(ds);
             int idOrdine = ordineDao.doSaveOrder(ordine);
 
-            // Salva i dettagli dell'ordine (i singoli prodotti)
             OrderDetailDAO dettaglioDao = new OrderDetailDAO(ds);
             ProductDAO productDao = new ProductDAO(ds);
             for (CartItem item : cart.getItems()) {
@@ -58,6 +57,7 @@ public class CreateOrderServlet extends HttpServlet {
                 dettaglio.setIdProdotto(item.getProduct().getId());
                 dettaglio.setQta(item.getQuantity());
                 dettaglio.setPrezzoUnitario(item.getProduct().getPrezzo());
+                dettaglio.setNomeProdotto(item.getProduct().getNome());
                 dettaglioDao.doSave(dettaglio);
                 
                 // Aggiorna la disponibilità del prodotto nel DB

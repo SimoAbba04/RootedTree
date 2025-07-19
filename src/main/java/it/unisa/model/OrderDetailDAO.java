@@ -17,14 +17,15 @@ public class OrderDetailDAO {
     public synchronized void doSave(OrderDetailDTO dettaglio) throws SQLException {
         Connection c = null;
         PreparedStatement ps = null;
-        String sql = "INSERT INTO " + TABLE_NAME + " (IdOrdine, IdProdotto, Quantita, PrezzoUnitario) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO " + TABLE_NAME + " (IdOrdine, IdProdotto, NomeProdotto, Quantita, PrezzoUnitario) VALUES (?, ?, ?, ?, ?)";
         try {
             c = ds.getConnection();
             ps = c.prepareStatement(sql);
             ps.setInt(1, dettaglio.getIdOrdine());
             ps.setInt(2, dettaglio.getIdProdotto());
-            ps.setInt(3, dettaglio.getQta());
-            ps.setDouble(4, dettaglio.getPrezzoUnitario());
+            ps.setString(3, dettaglio.getNomeProdotto());
+            ps.setInt(4, dettaglio.getQta());
+            ps.setDouble(5, dettaglio.getPrezzoUnitario());
             ps.executeUpdate();
         } finally {
             if (ps != null) ps.close();
@@ -47,6 +48,7 @@ public class OrderDetailDAO {
                 dettaglio.setId(rs.getInt("IdDettaglio"));
                 dettaglio.setIdOrdine(rs.getInt("IdOrdine"));
                 dettaglio.setIdProdotto(rs.getInt("IdProdotto"));
+                dettaglio.setNomeProdotto(rs.getString("NomeProdotto"));
                 dettaglio.setQta(rs.getInt("Quantita"));
                 dettaglio.setPrezzoUnitario(rs.getDouble("PrezzoUnitario"));
                 dettagli.add(dettaglio);
