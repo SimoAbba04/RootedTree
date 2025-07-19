@@ -57,3 +57,64 @@ p {
 .admin-button.logout:hover {
     background-color: #ebccd1;
 }
+
+
+.admin-table-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.admin-table-container .admin-actions {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.admin-search-bar {
+    margin-bottom: 20px;
+}
+
+.admin-search-bar form {
+    display: flex;
+    gap: 10px;
+}
+
+.admin-search-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #999;
+    font-size: 16px;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.product-table th,
+.product-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.product-table th {
+    background-color: #f2f2f2;
+}
+
+.product-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.action-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.action-links a:hover {
+    text-decoration: underline;
+}

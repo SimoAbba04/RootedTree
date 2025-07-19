@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestione Catalogo</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/admin-style.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/adminDashboard.css">
 </head>
 <body>
     <div class="admin-table-container">
