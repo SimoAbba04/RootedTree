@@ -109,8 +109,8 @@
 
 /* Classe 'active' per l'espansione */
 .search-bar.active input[type="text"] {
-    width: 220px; /* Larghezza quando espanso */
+    width: 220px; 
     opacity: 1;
-    padding: 0 15px; /* Spaziatura interna */
-    border: 1px solid #ccc; /* Bordo visibile quando attivo */
+    padding: 0 15px;
+    border: 1px solid #ccc; 
 }

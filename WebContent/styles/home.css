@@ -63,11 +63,11 @@
 
 .section-title::before,
 .section-title::after {
-    content: ''; /* È necessario per far apparire i pseudo-elementi. */
-    flex-grow: 1; /* 4. Dice alle linee di "allungarsi" per riempire lo spazio vuoto. */
-    background-color: #e0e0e0; /* Il colore della linea. */
-    height: 1px; /* Lo spessore della linea. */
-    margin: 0 1rem; /* 5. Crea un po' di spazio tra le linee e il testo "Novità". */
+    content: ''; /* È necessario per far apparire i pseudo-elementi */
+    flex-grow: 1; /*  Dice alle linee di "allungarsi" per riempire lo spazio vuoto */
+    background-color: #e0e0e0; 
+    height: 1px; 
+    margin: 0 1rem; /*  Crea un po' di spazio tra le linee e il testo  */
 }
 
 .category-container {

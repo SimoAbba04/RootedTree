@@ -16,7 +16,7 @@ footer{
 .footer-container {
 	max-width: 1000px;
 	margin: 0 auto;
-	padding: 0 auto; /*qui modifica*/
+	padding: 0 auto;
 	display: flex;
 	justify-content: space-between;
 	gap: 40px;

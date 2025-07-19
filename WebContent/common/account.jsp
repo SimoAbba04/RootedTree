@@ -192,7 +192,7 @@
 				</form>
 			</section>
 
-			<section class="account-section">
+			  <section class="account-section">
                 <h2>Cronologia Ordini</h2>
                 <c:choose>
                     <c:when test="${not empty orders}">
@@ -201,7 +201,7 @@
                         
                             <c:forEach var="order" items="${orders}">
                                 <div class="order-item">
-                                    <div class="order-header" onclick="toggleDetails(this)">
+                                    <div class="order-header">
                                         <span><strong>Ordine #${order.id}</strong></span>
                                         <span>${order.dataOrdine}</span>
                                         <span>€ ${order.totale}</span>
