@@ -12,7 +12,6 @@ public class OrderDetailDTO implements Serializable {
 	private int qta;
 	private double prezzoUnitario;
 	private String nomeProdotto;
-    private Collection<OrderDetailDTO> details;
 	// Getters e Setters
 	public int getId() {
 		return id;
@@ -61,11 +60,4 @@ public class OrderDetailDTO implements Serializable {
 	public void setNomeProdotto(String nomeProdotto) {
 		this.nomeProdotto = nomeProdotto;
 	}
-	
-    public Collection<OrderDetailDTO> getDetails() {
-        return details;
-    }
-    public void setDetails(Collection<OrderDetailDTO> details) {
-        this.details = details;
-    }
 }

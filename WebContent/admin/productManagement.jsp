@@ -43,7 +43,7 @@
                         <td>${product.disponibilità}</td>
                         <td class="action-links">
                             <a href="<%=request.getContextPath()%>/admin/productControlServlet?action=edit&id=${product.id}">Modifica</a> | 
-                            <a href="<%=request.getContextPath()%>/admin/productControlServlet?action=delete&id=${product.id}" onclick="return confirm('Sei sicuro di voler eliminare questo prodotto?')">Cancella</a>
+                            <a href="<%=request.getContextPath()%>/admin/productControlServlet?action=delete&id=${product.id}" >Cancella</a>
                         </td>
                     </tr>
                 </c:forEach>

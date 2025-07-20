@@ -174,7 +174,6 @@
     font-size: 60px;
 }
 
-/* --- Media Query per la Responsività --- */
 
 @media screen and (max-width: 850px) {
     .nav-links, .icons {

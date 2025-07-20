@@ -31,7 +31,7 @@
             </section>
             <section class="about-section reverse">
                 <div class="about-image">
-                    <img src="<%=request.getContextPath()%>/images/discover-2.jpg" alt="Serra luminosa con una vasta selezione di bonsai">
+                    <img src="<%=request.getContextPath()%>/images/serra.png" alt="Serra luminosa con una vasta selezione di bonsai">
                 </div>
                 <div class="about-text">
                     <h2>Qualità e Comunità al Vostro Servizio</h2>
