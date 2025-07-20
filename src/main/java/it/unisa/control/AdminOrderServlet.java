@@ -29,16 +29,16 @@ public class AdminOrderServlet extends HttpServlet {
             String endDate = request.getParameter("endDate");
 
             if (userEmail != null && !userEmail.isEmpty()) {
-                // Caso 1: Filtra per cliente
+                // Filtra per cliente
                 UserDTO user = userDao.doRetrieveByMail(userEmail);
                 if (user != null) {
                     orders = orderDao.doRetrieveByAccount(user.getID());
                 }
             } else if (startDate != null && !startDate.isEmpty() && endDate != null && !endDate.isEmpty()) {
-                // Caso 2: Filtra per intervallo di date
+                // Filtra per intervallo di date
                 orders = orderDao.doRetrieveByDateRange(java.sql.Date.valueOf(startDate), java.sql.Date.valueOf(endDate));
             } else {
-                // Caso 3: Nessun filtro, recupera tutti gli ordini
+                // Nessun filtro, recupera tutti gli ordini
                 orders = orderDao.doRetrieveAll("DataOrdine DESC");
             }
 

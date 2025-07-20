@@ -32,10 +32,27 @@
     text-align: left;
 }
 
-.cart-item-image { display: flex; align-items: center; gap: 1rem; }
-.cart-item-image img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
-.cart-item-price, .cart-item-quantity, .cart-item-subtotal { text-align: center; font-size: 1.1rem; }
-.cart-item-remove { text-align: center; }
+.cart-item-image { 
+	display: flex; 
+	align-items: center; 
+	gap: 1rem; 
+}
+
+.cart-item-image img { 
+	width: 80px; 
+	height: 80px; 
+	object-fit: cover; 
+	border-radius: 8px; 
+}
+
+.cart-item-price, .cart-item-quantity, .cart-item-subtotal { 
+	text-align: center; 
+	font-size: 1.1rem; 
+}
+	
+.cart-item-remove { 
+	text-align: center; 
+}
 
 .btn-remove { 
     padding: 0.5rem 1rem; 
@@ -48,6 +65,10 @@
 }
 .btn-remove:hover {
     background-color: #a92222;
+}
+
+#formCheckout{
+	margin-top:1rem;
 }
 
 .cart-summary {
@@ -64,15 +85,20 @@
 .btn-checkout { display: block; width: 100%; text-align: center; background-color: #4a6853; color: white; padding: 1rem; border-radius: 8px; text-decoration: none; font-size: 1.1rem; transition: background-color 0.2s; }
 .btn-checkout:hover { background-color: #3d4c41; }
 
-.empty-cart { text-align: center; font-size: 1.5rem; padding: 4rem 0; }
+.empty-cart { 
+	text-align: center; 
+	font-size: 1.5rem; 
+	padding: 4rem 0; 
+}
+
 .empty-cart + .btn-details { display: table; margin: 0 auto; }
 
 
 .quantity-form {
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Spazio tra input e bottone */
-    justify-content: center; /* Centra il form all'interno della sua cella */
+    gap: 0.5rem; 
+    justify-content: center; 
 }
 
 .quantity-input {
@@ -121,7 +147,7 @@
 
 
     .cart-item-image {
-        justify-content: flex-start; /* Allinea a sinistra */
+        justify-content: flex-start; 
         font-size: 1.1rem;
         font-weight: bold;
     }
@@ -138,6 +164,6 @@
     }
     
      .quantity-form {
-        justify-content: flex-end; /* Allinea a destra su mobile */
+        justify-content: flex-end; 
     }
 }

@@ -78,8 +78,8 @@
 									value="${cart.total}" type="currency" currencySymbol="€ " /></span>
 						</div>
 
-						<form action="<%=request.getContextPath()%>/create-order"
-							method="post" style="margin-top: 1rem;">
+						<form action="<%=request.getContextPath()%>/createOrderServlet"
+							method="post" id="formCheckout">
 							<button type="submit" class="btn-checkout">Completa
 								Ordine e Paga</button>
 						</form>

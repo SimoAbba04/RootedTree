@@ -7,7 +7,7 @@
         <a href="<%=request.getContextPath()%>/common/discoverUs.jsp">Chi Siamo</a>
         <c:choose>
             <c:when test="${not empty sessionScope.user}">
-                <a href="<%=request.getContextPath()%>/account">Il Mio Account</a>
+                <a href="<%=request.getContextPath()%>common/account.jsp">Il Mio Account</a>
                 <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
             </c:when>
             <c:otherwise>
@@ -35,7 +35,7 @@
         <div class="search-bar-container">
             <div class="search-bar">
                 <form action="<%=request.getContextPath()%>/SearchServlet" method="GET" autocomplete="off">
-                    <input type="text" placeholder="Acero palmato" name="searchQuery" id="search-input" onkeyup="showSuggestions(this.value)">
+                    <input type="text" placeholder="Acero..." name="searchQuery" id="search-input" onkeyup="showSuggestions(this.value)">
                     <button type="submit"><img alt="cerca" src="<%=request.getContextPath()%>/images/search.svg"></button>
                 </form>
             </div>
@@ -46,7 +46,7 @@
         <div class="icons">
             <c:choose>
                 <c:when test="${not empty sessionScope.user}">
-                    <a href="<%=request.getContextPath()%>/account">
+                    <a href="<%=request.getContextPath()%>/AccountServlet">
                         <img src="<%=request.getContextPath()%>/images/login.svg" alt="Il Mio Account">
                     </a>
                     <a href="<%=request.getContextPath()%>/LogoutServlet">

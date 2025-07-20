@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
 @WebFilter("/*")
 public class AccessControlFilter extends HttpFilter implements Filter {
     
@@ -24,28 +23,31 @@ public class AccessControlFilter extends HttpFilter implements Filter {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 		HttpSession session = httpServletRequest.getSession(false);
-
-
-		Boolean isAdmin = null;
-		if (session != null) {
-		    isAdmin = (Boolean) session.getAttribute("isAdmin");
-		}
 		
+		boolean isLoggedIn = (session != null && session.getAttribute("user") != null);
+		Boolean isAdmin = (isLoggedIn) ? (Boolean) session.getAttribute("isAdmin") : false;
 		String path = httpServletRequest.getServletPath();
+		
 
-		if (path.startsWith("/admin/")) {
-			if (isAdmin == null || !isAdmin) {
-				httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/common/error500.jsp");
+		boolean isAdminPath = path.startsWith("/admin/");
+		boolean isUserPath = path.equals("/AccountServlet") || path.equals("/createOrderServlet");
+
+
+		//Se la risorsa è nell'area admin...
+		if (isAdminPath) {
+			if (!isLoggedIn || !isAdmin) {
+				// ...e l'utente non è un admin, reindirizza al login.
+				httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/common/login.jsp");
 				return;
 			}
-		}
-		
-		//protezione servlet
-		boolean isProtectedUserPath = path.equals("/account") || path.equals("/checkout") || path.equals("/create-order");
-		
-		if (isProtectedUserPath && isAdmin == null) { 
-			httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/common/login.jsp");
-			return;
+		} 
+		// Se la risorsa è un'area protetta per utenti...
+		else if (isUserPath) {
+		    if (!isLoggedIn) {
+		        // ...e l'utente non è loggato, reindirizza al login.
+		        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/common/login.jsp");
+		        return;
+		    }
 		}
 
 		chain.doFilter(request, response);

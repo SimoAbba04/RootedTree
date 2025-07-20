@@ -17,7 +17,7 @@
 
 .product-grid {
     display: grid;
-    /* Griglia responsive: crea colonne da min 280px a max 1fr. Si adatta automaticamente. */
+    /*Si adatta automaticamente. */
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
 }

@@ -9,11 +9,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Il Mio Account - RootedTree</title>
-<link rel="stylesheet" href="./styles/index.css">
-<link rel="stylesheet" href="./styles/navbar.css">
-<link rel="stylesheet" href="./styles/footer.css">
-<link rel="stylesheet" href="./styles/account.css">
-<link rel="stylesheet" href="./styles/notification.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/index.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/navbar.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/footer.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/account.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/notification.css">
 </head>
 <body>
 	<%@ include file="navbar.jsp"%>
@@ -30,13 +30,13 @@
 			</c:if>
 			<c:if test="${sessionScope.isAdmin == true}">
 				<div class="admin-link-container">
-					<a href="<%=request.getContextPath()%>/admin/dashboard"
+					<a href="<%=request.getContextPath()%>/admin/adminDashboard.jsp"
 						class="btn-admin-dashboard">Vai al Pannello Admin</a>
 				</div>
 			</c:if>
 			<section class="account-section">
 				<h2>I Tuoi Dati</h2>
-				<form id="profileForm" action="account" method="post"
+				<form id="profileForm" action="accountServlet" method="post"
 					onsubmit="return validateProfileForm()">
 					<input type="hidden" name="action" value="updateProfile">
 					<div class="form-group">
@@ -92,7 +92,7 @@
 
 			<section class="account-section">
 				<h2>Indirizzo di Spedizione</h2>
-				<form id="addressForm" action="account" method="post"
+				<form id="addressForm" action="accountServlet" method="post"
 					onsubmit="return validateAddressForm()">
 					<input type="hidden" name="action" value="updateAddress"> <input
 						type="hidden" name="addressId" value="${address.id}">
@@ -156,7 +156,7 @@
 
 			<section class="account-section">
 				<h2>Metodo di Pagamento</h2>
-				<form id="paymentForm" action="account" method="post"
+				<form id="paymentForm" action="accountServlet" method="post"
 					onsubmit="return validatePaymentForm()">
 					<input type="hidden" name="action" value="updatePayment"> <input
 						type="hidden" name="paymentId" value="${payment.id}">

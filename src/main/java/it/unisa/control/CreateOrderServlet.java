@@ -12,7 +12,7 @@ import java.util.Date;
 import javax.sql.DataSource;
 import it.unisa.model.*;
 
-@WebServlet("/create-order")
+@WebServlet("/createOrderServlet")
 public class CreateOrderServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -32,7 +32,7 @@ public class CreateOrderServlet extends HttpServlet {
         
         if (session.getAttribute("address") == null || session.getAttribute("payment") == null) {
             session.setAttribute("errorMessage", "Per procedere, completa il tuo profilo con un indirizzo e un metodo di pagamento.");
-            response.sendRedirect(request.getContextPath() + "/account");
+            response.sendRedirect(request.getContextPath() + "/common/account.jsp");
             return;
         }
 

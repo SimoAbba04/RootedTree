@@ -14,7 +14,7 @@ import java.util.Collection;
 import javax.sql.DataSource;
 import it.unisa.model.*;
 
-@WebServlet("/account")
+@WebServlet("/AccountServlet")
 public class AccountServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

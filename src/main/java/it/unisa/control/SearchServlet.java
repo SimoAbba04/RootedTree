@@ -22,8 +22,9 @@ public class SearchServlet extends HttpServlet {
 
         String searchQuery = request.getParameter("searchQuery");
         String categoryQuery = request.getParameter("category");
-        String source = request.getParameter("source"); // Legge il parametro nascosto
-
+        String source = request.getParameter("source"); // Legge il parametro nascosto per essere utilizzata sia
+        												//nella parte pubblica che privata del sito
+        
         DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
         ProductDAO productDao = new ProductDAO(ds);
 

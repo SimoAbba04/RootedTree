@@ -107,7 +107,7 @@ input[type="submit"]:hover {
     display: block; 
 }
 
-/* Stile per l'errore restituito dal server */
+
 .server-error {
     background-color: rgba(217, 83, 79, 0.1);
     border: 1px solid rgba(217, 83, 79, 0.3);

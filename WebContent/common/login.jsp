@@ -33,14 +33,9 @@
 			</div>
 			<input type="submit" value="Accedi" onclick="return validateLogin()">
 		</form>
-		<c:if test="${not empty successMessage}">
-			<div class="notification success">
-				<c:out value="${successMessage}" />
-			</div>
-		</c:if>
 		<c:if test="${not empty errorMessage }">
 			<div class="error server-error visible">
-				<c:out value="errorMessage"></c:out>
+				<c:out value="${errorMessage}"></c:out>
 			</div>
 		</c:if>
 		<p class="form-switch">
