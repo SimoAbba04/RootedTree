@@ -7,7 +7,7 @@
         <a href="<%=request.getContextPath()%>/common/discoverUs.jsp">Chi Siamo</a>
         <c:choose>
             <c:when test="${not empty sessionScope.user}">
-                <a href="<%=request.getContextPath()%>common/account.jsp">Il Mio Account</a>
+                <a href="<%=request.getContextPath()%>/common/account.jsp">Il Mio Account</a>
                 <a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
             </c:when>
             <c:otherwise>
