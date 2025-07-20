@@ -33,6 +33,11 @@
 			</div>
 			<input type="submit" value="Accedi" onclick="return validateLogin()">
 		</form>
+		<c:if test="${not empty successMessage }">
+			<div class="error success-error visible">
+				<c:out value="${successMessage}"></c:out>
+			</div>
+		</c:if>
 		<c:if test="${not empty errorMessage }">
 			<div class="error server-error visible">
 				<c:out value="${errorMessage}"></c:out>

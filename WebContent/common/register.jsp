@@ -56,12 +56,12 @@
 				onclick="return validateRegistration()">
 		</form>
 		<c:if test="${not empty successMessage}">
-			<div class="notification success">
+			<div class="error success-error visible">
 				<c:out value="${successMessage}" />
 			</div>
 		</c:if>
 		<c:if test="${not empty errorMessage}">
-			<div class="notification error">
+			<div class="error server-error visible">
 				<c:out value="${errorMessage}" />
 			</div>
 		</c:if>

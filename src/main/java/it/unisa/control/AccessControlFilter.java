@@ -36,16 +36,16 @@ public class AccessControlFilter extends HttpFilter implements Filter {
 		//Se la risorsa è nell'area admin...
 		if (isAdminPath) {
 			if (!isLoggedIn || !isAdmin) {
-				// ...e l'utente non è un admin, reindirizza al login.
-				httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/common/login.jsp");
+				// ...e l'utente non è un admin, reindirizza all'index.
+				httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/common/index.jsp");
 				return;
 			}
 		} 
 		// Se la risorsa è un'area protetta per utenti...
 		else if (isUserPath) {
 		    if (!isLoggedIn) {
-		        // ...e l'utente non è loggato, reindirizza al login.
-		        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/common/login.jsp");
+		        // ...e l'utente non è loggato, reindirizza all'index.
+		        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/common/index.jsp");
 		        return;
 		    }
 		}

@@ -36,7 +36,7 @@
 			</c:if>
 			<section class="account-section">
 				<h2>I Tuoi Dati</h2>
-				<form id="profileForm" action="accountServlet" method="post"
+				<form id="profileForm" action="AccountServlet" method="post"
 					onsubmit="return validateProfileForm()" novalidate>
 					<input type="hidden" name="action" value="updateProfile">
 					<div class="form-group">
@@ -92,7 +92,7 @@
 
 			<section class="account-section">
 				<h2>Indirizzo di Spedizione</h2>
-				<form id="addressForm" action="accountServlet" method="post"
+				<form id="addressForm" action="AccountServlet" method="post"
 					onsubmit="return validateAddressForm()" novalidate>
 					<input type="hidden" name="action" value="updateAddress"> <input
 						type="hidden" name="addressId" value="${address.id}">
@@ -156,7 +156,7 @@
 
 			<section class="account-section">
 				<h2>Metodo di Pagamento</h2>
-				<form id="paymentForm" action="accountServlet" method="post"
+				<form id="paymentForm" action="AccountServlet" method="post"
 					onsubmit="return validatePaymentForm()" novalidate>
 					<input type="hidden" name="action" value="updatePayment"> <input
 						type="hidden" name="paymentId" value="${payment.id}">

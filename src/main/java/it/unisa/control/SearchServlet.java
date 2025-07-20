@@ -39,7 +39,7 @@ public class SearchServlet extends HttpServlet {
                 products = productDao.doRetrieveByName(searchQuery);
                 pageTitle = "Risultati per: \"" + searchQuery + "\"";
             } else {
-                products = productDao.doRetrieveAll("IdProdotto");
+                products = productDao.doRetrieveAll("IdProdotto"); //Ordina in base all'id prodotto
                 pageTitle = "Tutti i Prodotti";
             }
             
