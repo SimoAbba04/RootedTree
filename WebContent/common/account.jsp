@@ -37,7 +37,7 @@
 			<section class="account-section">
 				<h2>I Tuoi Dati</h2>
 				<form id="profileForm" action="accountServlet" method="post"
-					onsubmit="return validateProfileForm()">
+					onsubmit="return validateProfileForm()" novalidate>
 					<input type="hidden" name="action" value="updateProfile">
 					<div class="form-group">
 						<label for="Fnome">Nome</label> <input type="text" id="Fnome"
@@ -93,7 +93,7 @@
 			<section class="account-section">
 				<h2>Indirizzo di Spedizione</h2>
 				<form id="addressForm" action="accountServlet" method="post"
-					onsubmit="return validateAddressForm()">
+					onsubmit="return validateAddressForm()" novalidate>
 					<input type="hidden" name="action" value="updateAddress"> <input
 						type="hidden" name="addressId" value="${address.id}">
 
@@ -157,7 +157,7 @@
 			<section class="account-section">
 				<h2>Metodo di Pagamento</h2>
 				<form id="paymentForm" action="accountServlet" method="post"
-					onsubmit="return validatePaymentForm()">
+					onsubmit="return validatePaymentForm()" novalidate>
 					<input type="hidden" name="action" value="updatePayment"> <input
 						type="hidden" name="paymentId" value="${payment.id}">
 					<div class="form-group">

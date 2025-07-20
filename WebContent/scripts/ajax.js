@@ -1,7 +1,7 @@
-function showSuggestions(str) {
+function showSuggestions(str, contextPath) {
     const suggestionsBox = document.getElementById("suggestions-box");
     
-    if (str.length < 2) { // Mostra suggerimenti solo dopo 2 caratteri
+    if (str.length < 2) {
         suggestionsBox.innerHTML = "";
         suggestionsBox.style.display = "none";
         return;
@@ -16,7 +16,10 @@ function showSuggestions(str) {
             
             if (suggestions.length > 0) {
                 for (let i = 0; i < suggestions.length; i++) {
-                    html += '<a href="SearchServlet?searchQuery=' + suggestions[i] + '">' + suggestions[i] + '</a>';
+                    const product = suggestions[i];
+                    
+                    // la riga corretta che "spacchetta" l'oggetto
+                    html += '<a href="' + contextPath + '/ProductDetailServlet?id=' + product.id + '">' + product.name + '</a>';
                 }
                 suggestionsBox.innerHTML = html;
                 suggestionsBox.style.display = "block";
@@ -27,16 +30,14 @@ function showSuggestions(str) {
         }
     };
     
-    xhr.open("GET", "SearchSuggestServlet?query=" + str, true);
+    xhr.open("GET", contextPath + "/SearchSuggestServlet?query=" + str, true);
     xhr.send();
 }
 
-// Chiudi i suggerimenti se l'utente clicca altrove
-//document.addEventListener("click", function (e) {
- //   const suggestionsBox = document.getElementById("suggestions-box");
-  //  const searchInput = document.getElementById("search-input");
-  //  if (e.target !== searchInput) {
-   //     suggestionsBox.style.display = "none";
-    //}
-//}
-//);
+document.addEventListener("click", function (e) {
+    const suggestionsBox = document.getElementById("suggestions-box");
+    const searchInput = document.getElementById("search-input");
+    if (e.target !== searchInput) {
+        suggestionsBox.style.display = "none";
+    }
+});

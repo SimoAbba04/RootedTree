@@ -35,7 +35,8 @@
         <div class="search-bar-container">
             <div class="search-bar">
                 <form action="<%=request.getContextPath()%>/SearchServlet" method="GET" autocomplete="off">
-                    <input type="text" placeholder="Acero..." name="searchQuery" id="search-input" onkeyup="showSuggestions(this.value)">
+                    <input type="text" placeholder="Acero..." name="searchQuery" id="search-input" 
+                           onkeyup="showSuggestions(this.value, '<%=request.getContextPath()%>')">
                     <button type="submit"><img alt="cerca" src="<%=request.getContextPath()%>/images/search.svg"></button>
                 </form>
             </div>
@@ -69,4 +70,5 @@
             &#9776;
         </div>
     </div>
+
 </header>

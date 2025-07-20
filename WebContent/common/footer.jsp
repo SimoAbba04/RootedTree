@@ -34,3 +34,5 @@
         </div>
     </div>
 </footer>
+<script src="<%=request.getContextPath()%>/scripts/animation.js"></script>
+<script src="<%=request.getContextPath()%>/scripts/ajax.js"></script>

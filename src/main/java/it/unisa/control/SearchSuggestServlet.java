@@ -10,7 +10,8 @@ import java.sql.SQLException;
 import java.util.Collection;
 import javax.sql.DataSource;
 
-import org.json.JSONArray; //Libreria aggiuntiva
+import org.json.JSONArray;
+import org.json.JSONObject; // Aggiunto import per gli oggetti JSON
 
 import it.unisa.model.ProductDAO;
 import it.unisa.model.ProductDTO;
@@ -32,12 +33,15 @@ public class SearchSuggestServlet extends HttpServlet {
             try {
                 Collection<ProductDTO> products = productDao.doRetrieveByPartialName(query);
                 
+                // Creiamo un array di oggetti JSON
                 JSONArray jsonArray = new JSONArray();
                 for (ProductDTO p : products) {
-                    jsonArray.put(p.getNome());
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("id", p.getId());//Con id...
+                    jsonObject.put("name", p.getNome());//... e nome prodotti
+                    jsonArray.put(jsonObject);
                 }
                 
-                // Scrivi l'array JSON nella risposta
                 response.getWriter().write(jsonArray.toString());
                 
             } catch (SQLException e) {

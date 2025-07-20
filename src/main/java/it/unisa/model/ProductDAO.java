@@ -404,7 +404,7 @@ public class ProductDAO implements IBeanDao<ProductDTO> {
 		try {
 			c = ds.getConnection();
 			ps = c.prepareStatement(sql);
-			ps.setString(1, partialName + "%");
+			ps.setString(1,"%" + partialName + "%");
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
