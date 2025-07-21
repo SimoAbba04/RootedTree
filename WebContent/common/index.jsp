@@ -4,13 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>RootedTree - Bonsai Shop</title>
-<link rel="icon" type="image/x-icon" href="<%=request.getContextPath()%>/images/rootedTreeFavicon.svg">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/index.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/navbar.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/home.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/footer.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/result.css">
+<link rel="icon" type="image/x-icon"
+	href="<%=request.getContextPath()%>/images/rootedTreeFavicon.svg">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/styles/index.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/styles/navbar.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/styles/home.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/styles/footer.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/styles/result.css">
 </head>
 <body>
 	<%@ include file="/common/navbar.jsp"%>
@@ -18,6 +26,6 @@
 		<%@ include file="/common/home.jsp"%>
 	</main>
 	<%@ include file="/common/footer.jsp"%>
-	
+
 </body>
 </html>
